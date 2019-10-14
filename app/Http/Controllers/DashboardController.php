@@ -10,4 +10,10 @@ class DashboardController extends Controller
         $data['title']='Dashboard';
         return view('backend.dashboard',$data);
     }
+
+    public function test()
+    {
+        $data['title'] = 'Test';
+        return 'This route is created for test purpose from Dashboard Controller';
+    }
 }

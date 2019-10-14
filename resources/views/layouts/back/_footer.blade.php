@@ -6,4 +6,4 @@
     </div>
 </footer>
 
-@stack('library-js')
+

@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 
 Route::get('dashboard','DashboardController@index')->name('dashboard');
+Route::get('test','DashboardController@test')->name('test');
 Route::resource('category','CategoryController');

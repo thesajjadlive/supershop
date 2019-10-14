@@ -26,6 +26,7 @@
             <!-- Topbar -->
         @include('layouts.back._header')
             <!-- End of Topbar -->
+            @include('layouts.back._message')
 
             <!-- Begin Page Content -->
         @yield('content')
@@ -37,6 +38,7 @@
         <!-- Footer -->
         @include('layouts.back._footer')
         <!-- End of Footer -->
+
 
     </div>
     <!-- End of Content Wrapper -->
