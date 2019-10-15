@@ -16,7 +16,6 @@
                         <tr>
                             <th>SL</th>
                             <th>Name</th>
-                            <th>Parent Name</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -27,12 +26,6 @@
                             <tr>
                                 <td>{{ $serial++ }}</td>
                                 <td>{{ ucfirst($category->name) }}</td>
-
-                                @if($category->id == $category->parent_id)
-                                    <td>{{ $category->name }}</td>
-                                @else
-                                    <td>Main Category</td>
-                                @endif
 
                                 <td><span class="{{ ($category->status == 'active')?'text-success':'text-danger'}}"> {{ ucfirst($category->status)  }} </span></td>
                                 <td>
