@@ -36,7 +36,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{route('category.index')}}">
+        <a class="nav-link" href="{{route('brand.index')}}">
             <i class="fa fa-circle-thin"></i>
             <span>Brands</span></a>
     </li>
