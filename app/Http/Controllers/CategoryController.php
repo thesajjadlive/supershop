@@ -13,10 +13,20 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $data['title'] = 'Category List';
-        $data['categories'] = Category::orderBy('id','DESC')->withTrashed()->paginate(10);
+        //$data['categories'] = Category::withTrashed()->orderBy('id','DESC')->paginate(10);
+        $category = new Category();
+        $category = $category->withTrashed();
+
+        //search category
+        if ($request->has('search')){
+            $category = $category->where('name','like','%'.$request->search.'%');
+        }
+
+
+        $data['categories'] = $category->orderBy('id','DESC')->paginate(10);
         $data['serial'] = 1;
         return view('backend.category.index', $data);
     }

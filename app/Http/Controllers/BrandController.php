@@ -12,10 +12,23 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $data['title'] = 'Brand List';
-        $data['brands'] = Brand::orderBy('id','DESC')->withTrashed()->paginate(10);
+        //$data['brands'] = Brand::withTrashed()->orderBy('id','DESC')->paginate(10);
+
+        $brand = new Brand();
+        $brand = $brand->withTrashed();
+
+        //search brand
+        if ($request->has('search')){
+            $brand = $brand->where('name','like','%'.$request->search.'%');
+        }
+
+
+        $brand = $brand->orderBy('id','DESC')->paginate(10);
+        $data['brands'] =$brand;
         $data['serial'] = 1;
 
         return view('backend.brand.index', $data);

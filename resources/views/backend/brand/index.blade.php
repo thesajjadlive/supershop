@@ -8,6 +8,12 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <a class="btn btn-outline-dark float-left" href="{{ route('brand.create') }}">Add New</a>
+                <div class="search-container float-right">
+                    <form>
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
