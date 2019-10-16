@@ -22,8 +22,13 @@ class BrandController extends Controller
         $brand = $brand->withTrashed();
 
         //search brand
-        if ($request->has('search')){
+        if ($request->has('search') && $request->search != null){
             $brand = $brand->where('name','like','%'.$request->search.'%');
+        }
+
+        //search via status
+        if ($request->has('status') && $request->status != null){
+            $brand = $brand->where('status',$request->status);
         }
 
 

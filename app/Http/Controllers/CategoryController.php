@@ -21,8 +21,13 @@ class CategoryController extends Controller
         $category = $category->withTrashed();
 
         //search category
-        if ($request->has('search')){
+        if ($request->has('search') && $request->search != null){
             $category = $category->where('name','like','%'.$request->search.'%');
+        }
+
+        //search via status
+        if ($request->has('status') && $request->status != null){
+            $category = $category->where('status',$request->status);
         }
 
 

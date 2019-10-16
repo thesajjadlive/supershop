@@ -9,9 +9,19 @@
             <div class="card-header py-3">
                 <a class="btn btn-outline-dark float-left" href="{{ route('category.create') }}">Add New</a>
                 <div class="search-container float-right">
-                    <form>
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit">Search</button>
+
+                    <form class="form-inline">
+                        <div class="form-group">
+                        <select class="form-control" name="status" id="">
+                            <option value="">Select Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Search.." name="search">
+                        </div>
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
                     </form>
                 </div>
             </div>
