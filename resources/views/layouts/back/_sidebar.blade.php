@@ -31,13 +31,13 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('category.index')}}">
-            <i class="fa fa-circle-thin"></i>
+            <i class="fa fa-th-large"></i>
             <span>Categories</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{route('brand.index')}}">
-            <i class="fa fa-circle-thin"></i>
+            <i class="fa fa-tags"></i>
             <span>Brands</span></a>
     </li>
 
