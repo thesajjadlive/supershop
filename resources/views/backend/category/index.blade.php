@@ -29,12 +29,25 @@
 
                                 <td><span class="{{ ($category->status == 'active')?'text-success':'text-danger'}}"> {{ ucfirst($category->status)  }} </span></td>
                                 <td>
+                                    @if($category->deleted_at == null)
                                     <a href="{{ route('category.edit',$category->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                                     <form action="{{ route('category.destroy',$category->id) }}" method="post" style="display: inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Are you confirm to delete?')"><i class="fa fa-trash"></i></button>
+                                        <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
                                     </form>
+                                     @else
+                                        <form action="{{ route('category.restore',$category->id) }}" method="post" style="display: inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Do you want this back?')"><i class="fa fa-undo"></i></button>
+                                        </form>
+
+                                        <form action="{{ route('category.delete',$category->id) }}" method="post" style="display: inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Confirm to permanently remove?')"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

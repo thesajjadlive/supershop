@@ -15,7 +15,7 @@ class BrandController extends Controller
     public function index()
     {
         $data['title'] = 'Brand List';
-        $data['brands'] = Brand::orderBy('id','DESC')->paginate(10);
+        $data['brands'] = Brand::orderBy('id','DESC')->withTrashed()->paginate(10);
         $data['serial'] = 1;
 
         return view('backend.brand.index', $data);
@@ -103,6 +103,23 @@ class BrandController extends Controller
     {
         $brand->delete();
         session()->flash('message','Brand Deleted Successfully');
+        return redirect()->route('brand.index');
+    }
+
+
+    public function restore($id)
+    {
+        $brand = Brand::onlyTrashed()->findOrFail($id);
+        $brand->restore();
+        session()->flash('message','Brand Restored Successfully');
+        return redirect()->route('brand.index');
+    }
+
+    public function delete($id)
+    {
+        $brand = Brand::onlyTrashed()->findOrFail($id);
+        $brand->forceDelete();
+        session()->flash('message','Brand Permanently Removed');
         return redirect()->route('brand.index');
     }
 }

@@ -16,9 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         $data['title'] = 'Category List';
-        $data['categories'] = Category::orderBy('id','DESC')->paginate(10);
+        $data['categories'] = Category::orderBy('id','DESC')->withTrashed()->paginate(10);
         $data['serial'] = 1;
-        $data['parents'] = Category::where('id','parent_id')->get();
         return view('backend.category.index', $data);
     }
 
@@ -30,7 +29,6 @@ class CategoryController extends Controller
     public function create()
     {
         $data['title'] = 'Add New Category';
-        $data['levels'] = Category::get();
         return view('backend.category.create',$data);
     }
 
@@ -92,7 +90,7 @@ class CategoryController extends Controller
 
         $category_data = $request->except('_token','_method');
         $category->update($category_data);
-        session()->flash('message','Category updated Successfully');
+        session()->flash('message','Category Updated Successfully');
         return redirect()->route('category.index');
     }
 
@@ -105,7 +103,23 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        session()->flash('message','Category deleted Successfully');
+        session()->flash('message','Category Deleted Successfully');
+        return redirect()->route('category.index');
+    }
+
+    public function restore($id)
+    {
+        $category = Category::onlyTrashed()->findOrFail($id);
+        $category->restore();
+        session()->flash('message','Category Restored Successfully');
+        return redirect()->route('category.index');
+    }
+
+    public function delete($id)
+    {
+        $category = Category::onlyTrashed()->findOrFail($id);
+        $category->forceDelete();
+        session()->flash('message','Category Permanently Removed');
         return redirect()->route('category.index');
     }
 
