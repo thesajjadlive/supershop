@@ -31,8 +31,10 @@ class CategoryController extends Controller
         }
 
 
-        $data['categories'] = $category->orderBy('id','DESC')->paginate(10);
-        $data['serial'] = 1;
+        $category = $category->orderBy('id','DESC')->paginate(10);
+        $data['categories'] = $category;
+        $data['serial'] = managePagination($category);
+
         return view('backend.category.index', $data);
     }
 

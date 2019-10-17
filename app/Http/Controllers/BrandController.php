@@ -34,7 +34,7 @@ class BrandController extends Controller
 
         $brand = $brand->orderBy('id','DESC')->paginate(10);
         $data['brands'] =$brand;
-        $data['serial'] = 1;
+        $data['serial'] = managePagination($brand);
 
         return view('backend.brand.index', $data);
     }
