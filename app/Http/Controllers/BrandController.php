@@ -33,6 +33,15 @@ class BrandController extends Controller
 
 
         $brand = $brand->orderBy('id','DESC')->paginate(10);
+
+        //next pages search issue resolved (this must be after paginate)
+        if (isset($request->status) || $request->search) {
+            $render['status'] = $request->status;
+            $render['search'] = $request->search;
+            $category = $brand->appends($render);
+        }
+
+
         $data['brands'] =$brand;
         $data['serial'] = managePagination($brand);
 

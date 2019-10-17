@@ -32,6 +32,16 @@ class CategoryController extends Controller
 
 
         $category = $category->orderBy('id','DESC')->paginate(10);
+
+
+        //next pages search issue resolved (this must be after paginate)
+        if (isset($request->status) || $request->search) {
+            $render['status'] = $request->status;
+            $render['search'] = $request->search;
+            $category = $category->appends($render);
+        }
+
+
         $data['categories'] = $category;
         $data['serial'] = managePagination($category);
 
