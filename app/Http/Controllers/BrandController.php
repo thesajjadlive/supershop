@@ -115,7 +115,7 @@ class BrandController extends Controller
             'status'=>'required'
         ]);
         $brand_data = $request->except('_token','_method');
-        $brand->create($brand_data);
+        $brand->update($brand_data);
         session()->flash('message','Brand Edited Successfully');
         return redirect()->route('brand.index');
     }

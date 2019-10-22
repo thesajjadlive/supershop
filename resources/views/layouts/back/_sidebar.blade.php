@@ -42,15 +42,39 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{route('category.index')}}">
-            <i class="fa fa-circle-thin"></i>
+        <a class="nav-link" href="{{route('product.index')}}">
+            <i class="fa fa-archive"></i>
             <span>Products</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{route('category.index')}}">
-            <i class="fa fa-circle-thin"></i>
+            <i class="fa fa-eraser"></i>
+            <span>Coupon</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('category.index')}}">
+            <i class="fa fa-calendar-o"></i>
+            <span>Coupon</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('category.index')}}">
+            <i class="fa fa-user"></i>
             <span>Users</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('category.index')}}">
+            <i class="fa fa-sliders"></i>
+            <span>Slider</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('category.index')}}">
+            <i class="fa fa-cog"></i>
+            <span>Setting</span></a>
     </li>
 
 
