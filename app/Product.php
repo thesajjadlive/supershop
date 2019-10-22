@@ -19,4 +19,15 @@ class Product extends Model
         'stock',
         'status'
     ];
+
+
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }

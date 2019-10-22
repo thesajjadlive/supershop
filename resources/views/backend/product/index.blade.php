@@ -31,9 +31,8 @@
                         <tr>
                             <th>SL</th>
                             <th>Product Name</th>
-                            <th>Size</th>
-                            <th>Color</th>
-                            <th>Description</th>
+                            <th width="30%">Description</th>
+                            <th width="10%">Image</th>
                             <th>Price</th>
                             <th>Stock</th>
                             <th>Status</th>
@@ -46,9 +45,8 @@
                             <tr>
                                 <td>{{ $serial++ }}</td>
                                 <td>{{ ucfirst($product->name) }}</td>
-                                <td>{{ $product->size }}</td>
-                                <td>{{ ucfirst($product->color) }}</td>
-                                <td>{{ ucfirst($product->description) }}</td>
+                                <td>{{ ucfirst(Str::limit($product->description,60)) }}</td>
+                                <td>{{ $product->price }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td><span class="{{ ($product->status == 'active')?'text-success':'text-danger'}}"> {{ ucfirst($product->status)  }} </span></td>
@@ -60,6 +58,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
                                         </form>
+                                        <a href="{{ route('product.show',$product->id) }}" class="btn btn-sm btn-facebook"> &nbsp;<i class="fa fa-info"></i>&nbsp; </a>
                                     @else
                                         <form action="{{ route('product.restore',$product->id) }}" method="post" style="display: inline">
                                             @csrf

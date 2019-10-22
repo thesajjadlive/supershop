@@ -95,7 +95,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $data['title'] = 'Product Details';
+        $data['product'] = $product;
+        $data['categories']= Category::orderBy('name')->pluck('name','id');
+        $data['brands']= Brand::orderBy('name')->pluck('name','id');
+        return view('backend.product.show',$data);
     }
 
     /**
