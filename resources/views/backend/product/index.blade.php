@@ -31,8 +31,6 @@
                         <tr>
                             <th>SL</th>
                             <th>Product Name</th>
-                            <th width="30%">Description</th>
-                            <th width="10%">Image</th>
                             <th>Price</th>
                             <th>Stock</th>
                             <th>Status</th>
@@ -45,8 +43,6 @@
                             <tr>
                                 <td>{{ $serial++ }}</td>
                                 <td>{{ ucfirst($product->name) }}</td>
-                                <td>{{ ucfirst(Str::limit($product->description,60)) }}</td>
-                                <td>{{ $product->price }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td><span class="{{ ($product->status == 'active')?'text-success':'text-danger'}}"> {{ ucfirst($product->status)  }} </span></td>

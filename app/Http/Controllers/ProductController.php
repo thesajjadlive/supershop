@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\Product;
+use App\ProductImage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -79,10 +80,26 @@ class ProductController extends Controller
             'description'=>'nullable',
             'price'=>'required|numeric',
             'stock'=>'required|numeric',
-            'status'=>'required'
+            'status'=>'required',
+            'images.*'=>'image'
         ]);
-        $product = $request->except('_token');
-        Product::create($product);
+        //Product create
+        $product = $request->except('_token','images');
+        $product = Product::create($product);
+
+        //Multiple image upload
+        if (count($request->images))
+        {
+            foreach ($request->images as $image)
+            {
+                $product_image['product_id'] = $product->id;
+                $image->move('images/products',$image->getClientOriginalName());
+                $product_image['file_path'] = 'images/products'.$image->getClientOriginalName();
+                ProductImage::create($product_image);
+            }
+        }
+
+
         session()->flash('message','Product Created Successfully');
         return redirect()->route('product.index');
     }

@@ -38,7 +38,7 @@ class BrandController extends Controller
         if (isset($request->status) || $request->search) {
             $render['status'] = $request->status;
             $render['search'] = $request->search;
-            $category = $brand->appends($render);
+            $brand = $brand->appends($render);
         }
 
 

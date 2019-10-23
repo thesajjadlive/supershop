@@ -146,12 +146,13 @@
             <div class="pl-1 text-danger">{{ $message }}</div>
             @enderror
 
-            {{--<div class="form-group">
+            <div class="form-group">
                 <label for="image">Images</label>
                 <br>
                 <input type="file" name="images[]" id="image" multiple>
                 <br>
-                @if(isset($product) && count($product->product_image))
+
+                {{--@if(isset($product) && count($product->product_image))
                     @foreach($product->product_image as $image)
                         <img style="width: 20%" src="{{ asset($image->file_path) }}" alt="">
                         <a href="{{ route('product.delete.image',$image->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you confirm to delete this image?')">Delete</a>
@@ -159,8 +160,9 @@
                 @endif
                 @error('images.*')
                 <div class="pl-1 text-danger">{{ $message }}</div>
-                @enderror
-            </div>--}}
+                @enderror--}}
+
+            </div>
         </div>
     </div>
 </section>

@@ -14,6 +14,7 @@
                         <div class=" ">
                             <h1 class="h4 text-gray-900 mb-4">{{ $title }}!</h1>
                         </div>
+
                         <table class="table table-bordered table-hover table-striped">
                             <thead class="text-center">
                             <tr>
@@ -24,23 +25,35 @@
                             <tbody>
                             <tr>
                                 <td>Product Name</td>
-                                <td>{{ $product->name }}</td>
+                                <td>{{ ucfirst($product->name) }}</td>
                             </tr>
                             <tr>
                                 <td>Category</td>
-                                <td>{{ $product->category->name }}</td>
+                                <td>{{ ucfirst($product->category->name) }}</td>
                             </tr>
                             <tr>
                                 <td>Brand</td>
-                                <td>{{ $product->brand->name }}</td>
+                                <td>{{ ucfirst($product->brand->name) }}</td>
                             </tr>
                             <tr>
                                 <td>Size</td>
-                                <td>{{ $product->size }}</td>
+                                <td>
+                                    @if($product->size!=null)
+                                        {{ $product->size }}
+                                        @else
+                                        Not Available
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>Color</td>
-                                <td>{{ $product->color }}</td>
+                                <td>
+                                    @if($product->color!=null)
+                                        {{ ucfirst($product->color) }}
+                                    @else
+                                        Not Available
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>Price</td>
@@ -52,11 +65,17 @@
                             </tr>
                             <tr>
                                 <td>Status</td>
-                                <td>{{ $product->status }}</td>
+                                <td>{{ ucfirst($product->status) }}</td>
                             </tr>
                             <tr>
                                 <td>Description</td>
-                                <td>{{ $product->description }}</td>
+                                <td>
+                                    @if($product->description!=null)
+                                        {{ ucfirst($product->description) }}
+                                    @else
+                                        Not Available
+                                    @endif
+                                </td>
                             </tr>
                             </tbody>
                         </table>
