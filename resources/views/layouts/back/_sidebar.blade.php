@@ -48,7 +48,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{route('category.index')}}">
+        <a class="nav-link" href="{{route('coupon.index')}}">
             <i class="fa fa-eraser"></i>
             <span>Coupon</span></a>
     </li>
@@ -56,7 +56,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('category.index')}}">
             <i class="fa fa-calendar-o"></i>
-            <span>Coupon</span></a>
+            <span>Campaign</span></a>
     </li>
 
     <li class="nav-item">
