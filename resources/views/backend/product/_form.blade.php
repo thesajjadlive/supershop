@@ -151,18 +151,43 @@
                 <br>
                 <input type="file" name="images[]" id="image" multiple>
                 <br>
+                <br>
 
-                {{--@if(isset($product) && count($product->product_image))
-                    @foreach($product->product_image as $image)
-                        <img style="width: 20%" src="{{ asset($image->file_path) }}" alt="">
-                        <a href="{{ route('product.delete.image',$image->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you confirm to delete this image?')">Delete</a>
-                    @endforeach
-                @endif
+                <div>
+                    @if(isset($product) && count($product->product_image))
+                        @foreach($product->product_image as $image)
+                            <div class="d-inline position-relative dbutton">
+                                <img style="max-height: 80px; max-width: 30%;" src="{{ asset($image->file_path) }}" alt="">
+                                <a href="{{ route('product.delete.image',$image->id) }}" class="btn float-right"> X </a>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
                 @error('images.*')
                 <div class="pl-1 text-danger">{{ $message }}</div>
-                @enderror--}}
+                @enderror
 
             </div>
         </div>
     </div>
 </section>
+
+
+@push('custom-css')
+    <style>
+        .dbutton .btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #555;
+            color: white;
+            font-size: 8px;
+            padding: 5px 8px;
+            border-radius: 3px;
+        }
+
+        .dbutton .btn:hover {
+            background-color: red;
+    </style>
+@endpush

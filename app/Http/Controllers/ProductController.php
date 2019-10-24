@@ -7,6 +7,7 @@ use App\Category;
 use App\Product;
 use App\ProductImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -93,8 +94,9 @@ class ProductController extends Controller
             foreach ($request->images as $image)
             {
                 $product_image['product_id'] = $product->id;
-                $image->move('images/products',$image->getClientOriginalName());
-                $product_image['file_path'] = 'images/products'.$image->getClientOriginalName();
+                $file_name = $product->id.'-'.time().'-'.rand(0000,9999).'.'.$image->getClientoriginalExtension();
+                $image->move('images/products/',$file_name);
+                $product_image['file_path'] = 'images/products/'.$file_name;
                 ProductImage::create($product_image);
             }
         }
@@ -110,12 +112,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
         $data['title'] = 'Product Details';
-        $data['product'] = $product;
-        $data['categories']= Category::orderBy('name')->pluck('name','id');
-        $data['brands']= Brand::orderBy('name')->pluck('name','id');
+        $data['product'] = Product::with(['category','brand','product_image'])->findOrFail($id);
+
         return view('backend.product.show',$data);
     }
 
@@ -154,8 +155,24 @@ class ProductController extends Controller
             'stock'=>'required|numeric',
             'status'=>'required'
         ]);
+
         $product_data = $request->except('_token');
         $product->update($product_data);
+
+        //Multiple image update
+        if (count($request->images))
+        {
+            foreach ($request->images as $image)
+            {
+                $product_image['product_id'] = $product->id;
+                $file_name = $product->id.'-'.time().'-'.rand(0000,9999).'.'.$image->getClientoriginalExtension();
+                $image->move('images/products/',$file_name);
+                $product_image['file_path'] = 'images/products/'.$file_name;
+                ProductImage::create($product_image);
+            }
+        }
+
+
         session()->flash('message','Product Updated Successfully');
         return redirect()->route('product.index');
     }
@@ -187,5 +204,14 @@ class ProductController extends Controller
         $product->forceDelete();
         session()->flash('message','Product Removed Permanently');
         return redirect()->route('product.index');
+    }
+
+    public function delete_image($image_id)
+    {
+        $image = ProductImage::findOrFail($image_id);
+        File::delete($image->file_path);
+        $image->delete();
+        session()->flash('message','Product image has been deleted.');
+        return redirect()->back();
     }
 }

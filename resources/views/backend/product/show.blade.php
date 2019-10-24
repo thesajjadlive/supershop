@@ -28,6 +28,18 @@
                                 <td>{{ ucfirst($product->name) }}</td>
                             </tr>
                             <tr>
+                                <td>Image</td>
+                                <td>
+                                    <div>
+                                        @if(count($product->product_image))
+                                            @foreach($product->product_image as $image)
+                                                <div class="d-inline"><img style="max-height: 130px; max-width: 28%;" src="{{ asset($image->file_path) }}" alt=""></div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Category</td>
                                 <td>{{ ucfirst($product->category->name) }}</td>
                             </tr>

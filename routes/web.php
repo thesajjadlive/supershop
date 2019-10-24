@@ -33,3 +33,4 @@ Route::delete('brand/{id}/delete','BrandController@delete')->name('brand.delete'
 Route::resource('product','ProductController');
 Route::post('product/{id}/restore','ProductController@restore')->name('product.restore');
 Route::delete('product/{id}/delete','ProductController@delete')->name('product.delete');
+Route::get('product/{image_id}/delete','ProductController@delete_image')->name('product.delete.image');
