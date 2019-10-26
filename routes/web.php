@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 //dashboard route
 Route::get('dashboard','DashboardController@index')->name('dashboard');
+Route::get('user_list','DashboardController@user_list')->name('user.list');
 Route::get('test','DashboardController@test')->name('test');
 
 //category routes

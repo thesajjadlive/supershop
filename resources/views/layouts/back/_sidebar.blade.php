@@ -60,7 +60,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{route('category.index')}}">
+        <a class="nav-link" href="{{route('user.list')}}">
             <i class="fa fa-user"></i>
             <span>Users</span></a>
     </li>
