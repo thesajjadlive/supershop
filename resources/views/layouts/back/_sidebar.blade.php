@@ -54,7 +54,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{route('category.index')}}">
+        <a class="nav-link" href="{{route('campaign.index')}}">
             <i class="fa fa-calendar-o"></i>
             <span>Campaign</span></a>
     </li>

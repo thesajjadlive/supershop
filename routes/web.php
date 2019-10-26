@@ -41,3 +41,7 @@ Route::resource('coupon','CouponController');
 Route::post('coupon/{id}/restore','CouponController@restore')->name('coupon.restore');
 Route::delete('coupon/{id}/delete','CouponController@delete')->name('coupon.delete');
 
+//Campaign routes
+Route::resource('campaign','CampaignController');
+Route::post('campaign/{id}/restore','CampaignController@restore')->name('campaign.restore');
+Route::delete('campaign/{id}/delete','CampaignController@delete')->name('campaign.delete');
