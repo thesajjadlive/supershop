@@ -17,7 +17,7 @@ class CreateCampaignsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('details');
-            $table->text('date');
+            $table->date('date');
             $table->text('file_path');
             $table->softDeletes();
             $table->timestamps();

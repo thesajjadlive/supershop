@@ -26,11 +26,12 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 
+
 Route::middleware('auth')->group(function (){
 
     //dashboard route
     Route::get('dashboard','DashboardController@index')->name('dashboard');
-    Route::get('user_list','DashboardController@user_list')->name('user.list');
+
     Route::get('test','DashboardController@test')->name('test');
 
 //category routes
@@ -59,8 +60,10 @@ Route::middleware('auth')->group(function (){
     Route::post('campaign/{id}/restore','CampaignController@restore')->name('campaign.restore');
     Route::delete('campaign/{id}/delete','CampaignController@delete')->name('campaign.delete');
 
+    Route::resource('user','UserController');
+    Route::post('user/{id}/restore','UserController@restore')->name('user.restore');
+    Route::delete('user/{id}/delete','UserController@delete')->name('user.delete');
 
 });
-
 
 Auth::routes();
