@@ -104,12 +104,16 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'confirmed'
         ]);
-        $user_req = $request->except('_token');
+        $user_req = $request->except('_token','password');
 
-         if ($request->has('password'))
+
+
+        if ($request->password)
          {
              $user_req['password'] = bcrypt($request->password);
          }
+
+
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
