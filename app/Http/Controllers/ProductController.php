@@ -157,10 +157,15 @@ class ProductController extends Controller
         ]);
 
         $product_data = $request->except('_token');
+        if(!$request->has('is_featured'))
+        {
+            $product_data['is_featured'] = 0;
+        }
+
         $product->update($product_data);
 
         //Multiple image update
-        if (count($request->images))
+        if ($request->hasFile('file_path') && count($request->images))
         {
             foreach ($request->images as $image)
             {

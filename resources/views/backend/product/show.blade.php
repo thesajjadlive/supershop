@@ -76,6 +76,10 @@
                                 <td>{{ $product->stock }}</td>
                             </tr>
                             <tr>
+                                <td>Is Featured?</td>
+                                <td>@if($product->is_featured == 1) Yes @else No @endif</td>
+                            </tr>
+                            <tr>
                                 <td>Status</td>
                                 <td>{{ ucfirst($product->status) }}</td>
                             </tr>

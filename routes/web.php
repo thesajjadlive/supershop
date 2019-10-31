@@ -14,7 +14,7 @@
 
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('product/{id}', 'Front/ProductController@details')->name('product.details');
+Route::get('product/{id}','Front\ProductController@details')->name('product.details');
 
 
 
@@ -23,9 +23,9 @@ Route::get('product/{id}', 'Front/ProductController@details')->name('product.det
 
 
 
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->prefix('admin')->group(function (){
 
-    //dashboard route
+//dashboard route
     Route::get('dashboard','DashboardController@index')->name('dashboard');
 
     Route::get('test','DashboardController@test')->name('test');
@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function (){
     Route::post('campaign/{id}/restore','CampaignController@restore')->name('campaign.restore');
     Route::delete('campaign/{id}/delete','CampaignController@delete')->name('campaign.delete');
 
+//User routes
     Route::resource('user','UserController');
     Route::post('user/{id}/restore','UserController@restore')->name('user.restore');
     Route::delete('user/{id}/delete','UserController@delete')->name('user.delete');

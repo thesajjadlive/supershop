@@ -71,7 +71,7 @@
 <div class="header-middle">
     <div class="container">
         <div class="header-left">
-            <a href="index-2.html" class="logo">
+            <a href="{{ route('home') }}" class="logo">
                 <img src="{{ asset('assets/frontend/images/logo.png') }}" alt="Porto Logo">
             </a>
         </div><!-- End .header-left -->
@@ -192,7 +192,7 @@
     <div class="container">
         <nav class="main-nav">
             <ul class="menu sf-arrows">
-                <li class="active"><a href="index-2.html">Home</a></li>
+                <li class="active"><a href="{{ route('home') }}">Home</a></li>
                 <li>
                     <a href="category.html" class="sf-with-ul">Categories</a>
                     <div class="megamenu megamenu-fixed-width">
