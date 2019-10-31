@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $data['title'] = 'Product Details';
+        return view('frontend.product.details', $data);
     }
 
     /**
@@ -22,9 +24,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details()
+    public function details($id)
     {
-        //
+        $data['latest_product'] = Product::with(['category','brand'])->orderBy('id','DESC')->limit(6)->get() ;
+        $data['featured_product'] = Product::with(['category','brand'])->where('is_featured', 1)->orderBy('id','DESC')->limit(6)->get() ;
+        $data['product'] = Product::with('product_image')->findOrFail($id);
+        return view('frontend.product.details',$data);
     }
 
     /**
