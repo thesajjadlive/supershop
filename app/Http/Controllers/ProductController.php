@@ -82,10 +82,10 @@ class ProductController extends Controller
             'price'=>'required|numeric',
             'stock'=>'required|numeric',
             'status'=>'required',
-            'images.*'=>'image'
+            'images.*'=>'required|image'
         ]);
         //Product create
-        $product = $request->except('_token','images');
+        $product = $request->except('_token','images.*');
         $product = Product::create($product);
 
         //Multiple image upload

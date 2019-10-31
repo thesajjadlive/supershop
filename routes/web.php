@@ -22,7 +22,11 @@ Route::get('product/{id}','Front\ProductController@details')->name('product.deta
 
 
 
-
+/*
+-----------------------------
+Dashboard Route Group Start
+-----------------------------
+*/
 Route::middleware('auth')->prefix('admin')->group(function (){
 
 //dashboard route
@@ -64,3 +68,5 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 });
 
 Auth::routes();
+
+/* End of Dashboard Route Group */

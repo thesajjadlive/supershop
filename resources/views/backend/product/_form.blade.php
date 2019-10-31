@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label for="name">Product Name :</label>
-                <input name="name" type="text" value="{{ old('name',isset($product)?$product->name:null) }}"  class="form-control form-control-line @error('name') is-invalid @enderror" id="name">
+                <input required name="name" type="text" value="{{ old('name',isset($product)?$product->name:null) }}"  class="form-control form-control-line @error('name') is-invalid @enderror" id="name">
             </div>
             @error('name')
             <div class="pl-1 text-danger">{{ $message }}</div>
@@ -23,7 +23,7 @@
             @endphp
             <div class="form-group">
                 <label for="category_id">Category :</label>
-                <select class="form-control  form-control-line @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                <select required class="form-control  form-control-line @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
                     <option value="">Select Category</option>
                     @foreach($categories as $id=>$category)
                         <option @if($category_id == $id) selected @endif value="{{ $id }}">{{ $category }}</option>
@@ -47,7 +47,7 @@
                     }
                 @endphp
                 <label for="brand_id">Brand :</label>
-                <select class="form-control  form-control-line @error('brand_id') is-invalid @enderror" name="brand_id" id="brand_id">
+                <select required class="form-control  form-control-line @error('brand_id') is-invalid @enderror" name="brand_id" id="brand_id">
                     <option value="">Select Brand</option>
                     @foreach($brands as $id=>$value)
                         <option @if($brand_id == $id) selected @endif value="{{ $id }}">{{ $value }}</option>
@@ -82,7 +82,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="price">Price :</label>
-                <input name="price" type="number" step=".01" value="{{ old('price',isset($product)?$product->price:null) }}"  class="form-control form-control-line @error('price') is-invalid @enderror" id="price">
+                <input required name="price" type="number" step=".01" value="{{ old('price',isset($product)?$product->price:null) }}"  class="form-control form-control-line @error('price') is-invalid @enderror" id="price">
             </div>
             @error('price')
             <div class="pl-1 text-danger">{{ $message }}</div>
@@ -90,32 +90,12 @@
 
             <div class="form-group">
                 <label for="stock">Stock :</label>
-                <input name="stock" type="number" value="{{ old('stock',isset($product)?$product->stock:null) }}"  class="form-control form-control-line @error('stock') is-invalid @enderror" id="stock">
+                <input required name="stock" type="number" value="{{ old('stock',isset($product)?$product->stock:null) }}"  class="form-control form-control-line @error('stock') is-invalid @enderror" id="stock">
             </div>
             @error('stock')
             <div class="pl-1 text-danger">{{ $message }}</div>
             @enderror
 
-
-
-           {{-- <div class="form-group">
-                <label for="default">Is Featured</label>
-                <br>
-                @php
-                    if(old("is_featured")){
-                        $is_featured = old('is_featured');
-                    }elseif(isset($product)){
-                        $is_featured = $product->is_featured;
-                    }else{
-                        $is_featured = null;
-                    }
-                @endphp
-                <input name="is_featured" type="checkbox" value="1" id="active" @if($is_featured == 1) checked @endif >
-                <label for="active">Yes</label>
-            </div>
-            @error('is_featured')
-            <div class="pl-1 text-danger">{{ $message }}</div>
-            @enderror--}}
 
             <div class="form-group">
                 @php
@@ -168,7 +148,7 @@
             <div class="form-group">
                 <label for="image">Images</label>
                 <br>
-                <input type="file" name="images[]" id="image" multiple>
+                <input  type="file" name="images[]" id="image" multiple class="form-control form-control-line @error('images.*') is-invalid @enderror" @if(@!isset($product)) required @endif>
                 <br>
                 <br>
 

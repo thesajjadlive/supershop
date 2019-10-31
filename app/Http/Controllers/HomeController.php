@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['latest_product'] = Product::with(['category','brand'])->orderBy('id','DESC')->limit(6)->get() ;
+        $data['featured_product'] = Product::with(['category','brand'])->where('is_featured', 1)->orderBy('id','DESC')->limit(6)->get() ;
         return view('frontend.home',$data);
     }
 }
