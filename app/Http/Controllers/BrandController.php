@@ -72,6 +72,14 @@ class BrandController extends Controller
             'status'=>'required'
         ]);
         $brand = $request->except('_token');
+
+        if($request->hasFile('logo')){
+            $file = $request->file('logo');
+            $file->move('images/brands',$file->getClientOriginalName());
+            $brand['logo'] = 'images/brands/'.$file->getClientOriginalName();
+        }
+
+
         Brand::create($brand);
         session()->flash('message','Brand Created Successfully');
         return redirect()->route('brand.index');
@@ -115,6 +123,17 @@ class BrandController extends Controller
             'status'=>'required'
         ]);
         $brand_data = $request->except('_token','_method');
+
+        if($request->hasFile('logo')){
+            $file = $request->file('logo');
+            $file->move('images/brands/',$file->getClientOriginalName());
+            if($brand->logo != null)
+            {
+                File::delete($brand->logo);
+            }
+            $brand_data['logo'] = 'images/brands/'.$file->getClientOriginalName();
+        }
+
         $brand->update($brand_data);
         session()->flash('message','Brand Edited Successfully');
         return redirect()->route('brand.index');

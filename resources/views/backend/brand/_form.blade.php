@@ -31,4 +31,28 @@
         @enderror
     </div>
 
+
+    <div class="col-sm-6 mb-3 mb-sm-0">
+
+    <div class="form-group">
+        <label for="logo">Logo :</label>
+        <input required class="form-control" name="logo" type="file" id="logo">
+    </div>
+    @error('logo')
+    <div class="pl-1 text-danger">{{ $message }}</div>
+    @enderror
+
+    </div>
+
+
+    <div class="col-sm-12 mb-3 mb-sm-0">
+    <div class="form-group">
+        <label for="details">Brand Details :</label>
+        <textarea required name="details" rows="5" class="form-control form-control-line @error('details') is-invalid @enderror" id="details">{{ old('details',isset($brand)?$brand->details:null) }}</textarea>
+    </div>
+    @error('details')
+    <div class="pl-1 text-danger">{{ $message }}</div>
+    @enderror
+    </div>
+
 </div>
