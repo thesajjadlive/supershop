@@ -15,6 +15,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('product/{id}','Front\ProductController@details')->name('product.details');
+Route::get('products/{id?}','Front\ProductController@details')->name('front.product.index');
 
 
 

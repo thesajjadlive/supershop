@@ -201,43 +201,26 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="menu-title">
-                                            <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
+                                            <a href="{{ route('front.product.index') }}">All<span class="tip tip-new">New!</span></a>
                                         </div>
                                         <ul>
-                                            <li><a href="category.html">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
-                                            <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
-                                            <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                                            <li><a href="category.html">Left Sidebar</a></li>
-                                            <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                            <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
-                                            <li><a href="category-horizontal-filter1.html">Horizontal Filter1</a></li>
-                                            <li><a href="category-horizontal-filter2.html">Horizontal Filter2</a></li>
+                                            @foreach($categories as $id=>$category)
+                                                <li><a href="{{ route('front.product.index', $id) }}">{{ $category }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </div><!-- End .col-lg-6 -->
+
                                     <div class="col-lg-6">
-                                        <div class="menu-title">
-                                            <a href="#">Variations 2</a>
-                                        </div>
-                                        <ul>
-                                            <li><a href="#">Product List Item Types</a></li>
-                                            <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll</a></li>
-                                            <li><a href="category-3col.html">3 Columns Products</a></li>
-                                            <li><a href="category.html">4 Columns Products <span class="tip tip-new">New</span></a></li>
-                                            <li><a href="category-5col.html">5 Columns Products</a></li>
-                                            <li><a href="category-6col.html">6 Columns Products</a></li>
-                                            <li><a href="category-7col.html">7 Columns Products</a></li>
-                                            <li><a href="category-8col.html">8 Columns Products</a></li>
-                                        </ul>
-                                    </div><!-- End .col-lg-6 -->
+                                        <div class="banner">
+                                            <a href="#">
+                                                <img src="{{ asset('assets/frontend/images/menu-banner-2.jpg') }}" alt="Menu banner">
+                                            </a>
+                                        </div><!-- End .banner -->
+                                    </div><!-- End .col-lg-4 -->
+
                                 </div><!-- End .row -->
                             </div><!-- End .col-lg-8 -->
-                            <div class="col-lg-4">
-                                <div class="banner">
-                                    <a href="#">
-                                        <img src="{{ asset('assets/frontend/images/menu-banner-2.jpg') }}" alt="Menu banner">
-                                    </a>
-                                </div><!-- End .banner -->
-                            </div><!-- End .col-lg-4 -->
+
                         </div>
                     </div><!-- End .megamenu -->
                 </li>
