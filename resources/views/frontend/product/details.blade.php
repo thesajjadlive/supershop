@@ -275,11 +275,11 @@
 
                     @foreach($related_product as $product)
                         <div class="product">
-                            <figure class="product-image-container">
+                            <figure class="product-image-container" style="min-width: 277px; min-height: 277px;">
                                 <a href="{{ route('product.details',$product->id) }}" class="product-image">
                                     <img style="max-width: 277px; max-height: 277px;" src="{{ asset(isset($product->product_image[0])?$product->product_image[0]->file_path:'assets/frontend/images/no-image.jpg') }}" alt="product">
                                 </a>
-                                <a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
+                               {{-- <a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>--}}
                             </figure>
                             <div class="product-details">
 
