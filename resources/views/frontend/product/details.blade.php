@@ -5,7 +5,7 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="icon-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#">{{ $product->category->name }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('front.product.index', $product->category->id) }}">{{ $product->category->name }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
                 </ol>
             </div><!-- End .container -->
@@ -46,7 +46,7 @@
 
                                     <div class="ratings-container">
                                         <div class="">
-                                            <span  style="width:60%">{{ ucfirst($product->category->name) }}</span><!-- End .ratings -->
+                                            <span  style="width:60%"><a href="{{ route('front.product.index', $product->category->id) }}">{{ ucfirst($product->category->name) }}</a></span><!-- End .ratings -->
                                         </div><!-- End .product-ratings -->
                                     </div><!-- End .product-container -->
 
