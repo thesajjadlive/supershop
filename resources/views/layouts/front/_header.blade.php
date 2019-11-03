@@ -195,92 +195,16 @@
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
                 <li>
                     <a href="{{ route('front.product.index') }}" class="sf-with-ul">Categories</a>
-                    <div class="megamenu megamenu-fixed-width">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="menu-title">
-                                            <a href="{{ route('front.product.index') }}">All<span class="tip tip-new">New!</span></a>
-                                        </div>
-                                        <ul>
-                                            @foreach($categories as $id=>$category)
-                                                <li><a href="{{ route('front.product.index', $id) }}">{{ $category }}</a>
-                                                    <ul>
-                                                        <li><a href="">test</a></li>
-                                                    </ul>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div><!-- End .col-lg-6 -->
 
-                                </div><!-- End .row -->
-                            </div><!-- End .col-lg-8 -->
-
-                            <div class="col-lg-4">
-                                <div class="banner">
-                                    <a href="#">
-                                        <img src="{{ asset('assets/frontend/images/menu-banner-2.jpg') }}" alt="Menu banner">
-                                    </a>
-                                </div><!-- End .banner -->
-
-                            </div><!-- End .col-lg-4 -->
-                        </div>
-
-                    </div><!-- End .megamenu -->
+                    <ul>
+                        <li> <a href="{{ route('front.product.index') }}">All<span class="tip tip-new">New!</span></a></li>
+                        @foreach($categories as $id=>$category)
+                            <li><a href="{{ route('front.product.index', $id) }}">{{ $category }}</a></li>
+                        @endforeach
+                    </ul>
                 </li>
                 <li class="megamenu-container">
-                    <a href="product.html" class="sf-with-ul">Products</a>
-                    <div class="megamenu">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="menu-title">
-                                            <a href="#">Variations</a>
-                                        </div>
-                                        <ul>
-                                            <li><a href="product.html">Horizontal Thumbnails</a></li>
-                                            <li><a href="product-full-width.html">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
-                                            <li><a href="product.html">Inner Zoom</a></li>
-                                            <li><a href="product-addcart-sticky.html">Addtocart Sticky</a></li>
-                                            <li><a href="product-sidebar-left.html">Accordion Tabs</a></li>
-                                        </ul>
-                                    </div><!-- End .col-lg-4 -->
-                                    <div class="col-lg-4">
-                                        <div class="menu-title">
-                                            <a href="#">Variations</a>
-                                        </div>
-                                        <ul>
-                                            <li><a href="product-sticky-tab.html">Sticky Tabs</a></li>
-                                            <li><a href="product-simple.html">Simple Product</a></li>
-                                            <li><a href="product-sidebar-left.html">With Left Sidebar</a></li>
-                                        </ul>
-                                    </div><!-- End .col-lg-4 -->
-                                    <div class="col-lg-4">
-                                        <div class="menu-title">
-                                            <a href="#">Product Layout Types</a>
-                                        </div>
-                                        <ul>
-                                            <li><a href="product.html">Default Layout</a></li>
-                                            <li><a href="product-extended-layout.html">Extended Layout</a></li>
-                                            <li><a href="product-full-width.html">Full Width Layout</a></li>
-                                            <li><a href="product-grid-layout.html">Grid Images Layout</a></li>
-                                            <li><a href="product-sticky-both.html">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
-                                            <li><a href="product-sticky-info.html">Sticky Right Side Info</a></li>
-                                        </ul>
-                                    </div><!-- End .col-lg-4 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .col-lg-8 -->
-                            <div class="col-lg-4">
-                                <div class="banner">
-                                    <a href="#">
-                                        <img src="{{ asset('assets/frontend/images/menu-banner.jpg') }}" alt="Menu banner" class="product-promo">
-                                    </a>
-                                </div><!-- End .banner -->
-                            </div><!-- End .col-lg-4 -->
-                        </div><!-- End .row -->
-                    </div><!-- End .megamenu -->
+                    <a href="{{ route('front.product.index') }}">All Products !</a>
                 </li>
                 <li>
                     <a href="#" class="sf-with-ul">Pages</a>
