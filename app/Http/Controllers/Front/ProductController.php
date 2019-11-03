@@ -36,9 +36,10 @@ class ProductController extends Controller
     public function details($id)
     {
         $data['title'] = 'Product Details';
-        $data['latest_product'] = Product::with(['category','brand'])->orderBy('id','DESC')->limit(6)->get() ;
+       // $data['latest_product'] = Product::with(['category','brand'])->orderBy('id','DESC')->limit(6)->get() ;
         $data['featured_product'] = Product::with(['category','brand'])->where('is_featured', 1)->orderBy('id','DESC')->limit(6)->get() ;
         $data['product'] = Product::with('product_image')->findOrFail($id);
+        $data['related_product'] = Product::where('id','!=',$id)->where(['category_id'=>$data['product']->category_id])->orderBy('id','DESC')->limit(8)->get();
         return view('frontend.product.details',$data);
     }
 

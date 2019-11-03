@@ -268,12 +268,12 @@
 
         <div class="featured-section">
             <div class="container">
-                <h2 class="carousel-title">Latest Products</h2>
+                <h2 class="carousel-title">Related Products</h2>
 
                 <div class="featured-products owl-carousel owl-theme owl-dots-top">
 
 
-                    @foreach($latest_product as $product)
+                    @foreach($related_product as $product)
                         <div class="product">
                             <figure class="product-image-container">
                                 <a href="{{ route('product.details',$product->id) }}" class="product-image">
