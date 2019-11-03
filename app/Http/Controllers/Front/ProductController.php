@@ -13,10 +13,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id=false)
     {
         $data['title'] = 'Product Details';
-        return view('frontend.product.details', $data);
+        $products = new Product();
+        $products = $products->with(['brand','category','product_image']);
+
+        if ($id != false){
+            $products = $products->where('category_id', $id);
+        }
+
+        $products = $products->orderBy('id','DESC')->paginate('12');
+        $data['products'] = $products;
+        return view('frontend.product.index', $data);
     }
 
     /**
@@ -26,6 +35,7 @@ class ProductController extends Controller
      */
     public function details($id)
     {
+        $data['title'] = 'Product Details';
         $data['latest_product'] = Product::with(['category','brand'])->orderBy('id','DESC')->limit(6)->get() ;
         $data['featured_product'] = Product::with(['category','brand'])->where('is_featured', 1)->orderBy('id','DESC')->limit(6)->get() ;
         $data['product'] = Product::with('product_image')->findOrFail($id);

@@ -194,7 +194,7 @@
             <ul class="menu sf-arrows">
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
                 <li>
-                    <a href="category.html" class="sf-with-ul">Categories</a>
+                    <a href="{{ route('front.product.index') }}" class="sf-with-ul">Categories</a>
                     <div class="megamenu megamenu-fixed-width">
                         <div class="row">
                             <div class="col-lg-8">
@@ -205,23 +205,28 @@
                                         </div>
                                         <ul>
                                             @foreach($categories as $id=>$category)
-                                                <li><a href="{{ route('front.product.index', $id) }}">{{ $category }}</a></li>
+                                                <li><a href="{{ route('front.product.index', $id) }}">{{ $category }}</a>
+                                                    <ul>
+                                                        <li><a href="">test</a></li>
+                                                    </ul>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </div><!-- End .col-lg-6 -->
 
-                                    <div class="col-lg-6">
-                                        <div class="banner">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/frontend/images/menu-banner-2.jpg') }}" alt="Menu banner">
-                                            </a>
-                                        </div><!-- End .banner -->
-                                    </div><!-- End .col-lg-4 -->
-
                                 </div><!-- End .row -->
                             </div><!-- End .col-lg-8 -->
 
+                            <div class="col-lg-4">
+                                <div class="banner">
+                                    <a href="#">
+                                        <img src="{{ asset('assets/frontend/images/menu-banner-2.jpg') }}" alt="Menu banner">
+                                    </a>
+                                </div><!-- End .banner -->
+
+                            </div><!-- End .col-lg-4 -->
                         </div>
+
                     </div><!-- End .megamenu -->
                 </li>
                 <li class="megamenu-container">
@@ -281,30 +286,9 @@
                     <a href="#" class="sf-with-ul">Pages</a>
 
                     <ul>
-                        <li><a href="cart.html">Shopping Cart</a></li>
-                        <li><a href="#">Checkout</a>
-                            <ul>
-                                <li><a href="checkout-shipping.html">Checkout Shipping</a></li>
-                                <li><a href="checkout-shipping-2.html">Checkout Shipping 2</a></li>
-                                <li><a href="checkout-review.html">Checkout Review</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Dashboard</a>
-                            <ul>
-                                <li><a href="dashboard.html">Dashboard</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Blog</a>
-                            <ul>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="single.html">Blog Post</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="#" class="login-link">Login</a></li>
-                        <li><a href="forgot-password.html">Forgot Password</a></li>
+                        @foreach($categories as $id=>$category)
+                            <li><a href="{{ route('front.product.index', $id) }}">{{ $category }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li><a href="#" class="sf-with-ul">Features</a>

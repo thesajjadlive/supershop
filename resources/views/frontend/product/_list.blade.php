@@ -10,7 +10,7 @@
         <div class="product-details">
             <div class="">
                 <div class="">
-                    <span >{{ ucfirst($product->category->name) }}</span><!-- End .ratings -->
+                    <a href="{{ route('front.product.index', $product->category->id) }}">{{ ucfirst($product->category->name) }}</a>
                 </div><!-- End .product-ratings -->
             </div><!-- End .product-container -->
             <h2 class="product-title">
