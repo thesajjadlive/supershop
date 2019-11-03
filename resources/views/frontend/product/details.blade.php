@@ -282,11 +282,7 @@
                                 <a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
                             </figure>
                             <div class="product-details">
-                                <div class="">
-                                    <div class="">
-                                        <span class="ratings" style="width:80%">{{ $product->category->name }}</span><!-- End .ratings -->
-                                    </div><!-- End .product-ratings -->
-                                </div><!-- End .product-container -->
+
                                 <h2 class="product-title">
                                     <a href="{{ route('product.details',$product->id) }}">{{ $product->name }}</a>
                                 </h2>
