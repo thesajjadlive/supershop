@@ -51,8 +51,8 @@
                                     </div><!-- End .product-container -->
 
                                     <div class="price-box">
-                                        <span class="old-price">Tk. {{ $product->price*1.3 }}</span>
-                                        <span class="product-price">Tk. {{ $product->price }}</span>
+                                        <span class="old-price">৳ {{ round($product->price*1.25) }}</span>
+                                        <span class="product-price">৳ {{ $product->price }}</span>
                                     </div><!-- End .price-box -->
 
                                     <div class="product-desc">
@@ -88,19 +88,12 @@
                                             <input class="horizontal-quantity form-control" type="text">
                                         </div><!-- End .product-single-qty -->
 
-                                        <a href="cart.html" class="paction add-cart" title="Add to Cart">
+                                        <a href="#" class="paction add-cart" product-id="{{ $product->id }}" url="{{ route('ajax.addToCart',$product->id) }}" title="Add to Cart">
                                             <span>Add to Cart</span>
-                                        </a>
-                                        <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                            <span>Add to Wishlist</span>
-                                        </a>
-                                        <a href="#" class="paction add-compare" title="Add to Compare">
-                                            <span>Add to Compare</span>
                                         </a>
                                     </div><!-- End .product-action -->
 
                                     <div class="product-single-share">
-                                        <label>Share:</label>
                                         <!-- www.addthis.com share plugin-->
                                         <div class="addthis_inline_share_toolbox"></div>
                                     </div><!-- End .product single-share -->
@@ -224,7 +217,7 @@
                                                             </div><!-- End .product-ratings -->
                                                         </div><!-- End .product-container -->
                                                         <div class="price-box">
-                                                            <span class="product-price">Tk. {{ $product->price }}</span>
+                                                            <span class="product-price">৳ {{ $product->price }}</span>
                                                         </div><!-- End .price-box -->
                                                     </div><!-- End .product-details -->
                                                 </div><!-- End .product -->
@@ -251,7 +244,7 @@
                                                             </div><!-- End .product-ratings -->
                                                         </div><!-- End .product-container -->
                                                         <div class="price-box">
-                                                            <span class="product-price">Tk. {{ $product->price }}</span>
+                                                            <span class="product-price">৳ {{ $product->price }}</span>
                                                         </div><!-- End .price-box -->
                                                     </div><!-- End .product-details -->
                                                 </div><!-- End .product -->
@@ -287,21 +280,15 @@
                                     <a href="{{ route('product.details',$product->id) }}">{{ $product->name }}</a>
                                 </h2>
                                 <div class="price-box">
-                                    <span class="product-price">Tk. {{ $product->price }}</span>
+                                    <span class="product-price">৳ {{ $product->price }}</span>
                                 </div><!-- End .price-box -->
 
                                 <div class="product-action">
-                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                        <span>Add to Wishlist</span>
-                                    </a>
 
-                                    <a href="product.html" class="paction add-cart" title="Add to Cart">
+                                    <button class="btn paction add-cart" product-id="{{ $product->id }}" url="{{ route('ajax.addToCart',$product->id) }}" title="Add to Cart">
                                         <span>Add to Cart</span>
-                                    </a>
+                                    </button>
 
-                                    <a href="#" class="paction add-compare" title="Add to Compare">
-                                        <span>Add to Compare</span>
-                                    </a>
                                 </div><!-- End .product-action -->
                             </div><!-- End .product-details -->
                         </div><!-- End .product -->

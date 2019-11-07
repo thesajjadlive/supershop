@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo-8/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jul 2019 13:19:09 GMT -->
+
 <head>
     @include('layouts.front._head')
 </head>
@@ -53,5 +53,5 @@
 @include('layouts.front._scripts')
 </body>
 
-<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo-8/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jul 2019 13:19:44 GMT -->
+
 </html>

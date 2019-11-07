@@ -21,17 +21,11 @@
             </div><!-- End .price-box -->
 
             <div class="product-action">
-                <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                    <span>Add to Wishlist</span>
-                </a>
 
-                <a href="product.html" class="paction add-cart" title="Add to Cart">
+                <button class="btn paction add-cart" product-id="{{ $product->id }}" url="{{ route('ajax.addToCart',$product->id) }}" title="Add to Cart">
                     <span>Add to Cart</span>
-                </a>
+                </button>
 
-                <a href="#" class="paction add-compare" title="Add to Compare">
-                    <span>Add to Compare</span>
-                </a>
             </div><!-- End .product-action -->
         </div><!-- End .product-details -->
     </div><!-- End .product -->

@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('product/{id}','Front\ProductController@details')->name('product.details');
 Route::get('products/{id?}','Front\ProductController@index')->name('front.product.index');
 
-
+Route::get('ajax/add-to-cart/{product_id}','Front\AjaxController@addToCart')->name('ajax.addToCart');
 
 
 
