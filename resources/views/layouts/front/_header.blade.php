@@ -120,14 +120,14 @@
 
             <div class="dropdown cart-dropdown">
                 <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                    <span class="cart-count"> <span class="totalCartItemHeader">0</span> </span>
+                    <span class="cart-count"> <span class="totalCartItemHeader">{{ session('cart')!= null ?count(session('cart')):0 }}</span> </span>
                 </a>
 
                 <div class="dropdown-menu" >
                     <div class="dropdownmenu-wrapper">
 
                         <span class="headerCartDetails">
-
+                            <h4 class="text-center">No Items in Cart</h4>
                         </span>
 
                         <div class="dropdown-cart-action">

@@ -8,7 +8,7 @@ $(function () {
             method : 'GET',
 
             success : function (data) {
-                console.log('Success - ' + data.cart.length);
+                console.log('Success - ' + data);
 
                 $('.headerCartDetails').html(data.headerCartDetailsView);
                 $('.cart-count').html('<span class="totalCartItemHeader">'+ data.cart.length +'</span>');

@@ -11,7 +11,7 @@
     @endphp
 
 
-
+    @if($cart != null)
     @foreach($cart as $item)
         <div class="product">
             <div class="product-details">
@@ -39,7 +39,11 @@
         @endphp
 
     @endforeach
-
+        @else
+        <div class="product">
+            <span> No Products in Cart</span>
+        </div>
+    @endif
 
 </div><!-- End .cart-product -->
 
