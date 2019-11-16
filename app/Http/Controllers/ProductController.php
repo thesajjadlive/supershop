@@ -89,7 +89,7 @@ class ProductController extends Controller
         $product = Product::create($product);
 
         //Multiple image upload
-        if (count($request->images))
+        if ($request->images != null && count($request->images))
         {
             foreach ($request->images as $image)
             {
@@ -165,7 +165,7 @@ class ProductController extends Controller
         $product->update($product_data);
 
         //Multiple image update
-        if ($request->hasFile('file_path') && count($request->images))
+        if ($request->images != null && count($request->images))
         {
             foreach ($request->images as $image)
             {
