@@ -8,7 +8,7 @@ $(function () {
             method : 'GET',
 
             success : function (data) {
-                console.log('Success - ' + data);
+                console.log('Success - ' + JSON.stringify(data));
 
                 $('.headerCartDetails').html(data.headerCartDetailsView);
                 $('.cart-count').html('<span class="totalCartItemHeader">'+ data.cart.length +'</span>');
@@ -16,7 +16,7 @@ $(function () {
             },
 
             error : function (data) {
-                console.log('errors - ' + data);
+                console.log('errors - ' + JSON.stringify(data));
             }
         });
 

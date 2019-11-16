@@ -47,4 +47,17 @@ class ProductController extends Controller
      * show product details in frontend.
      */
 
+    public function cart()
+    {
+        $data['title'] = 'Cart Details';
+        $data['cart'] = session('cart');
+        return view('frontend.cart',$data);
+    }
+
+    public function clear()
+    {
+        session()->remove('cart');
+        return redirect()->back();
+    }
+
 }

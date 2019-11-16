@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Session;
 
 class AjaxController extends Controller
 {
@@ -21,8 +22,19 @@ class AjaxController extends Controller
             $sesionData['image'] = isset($product->product_image[0]) ? $product->product_image[0]->file_path : 'assets/frontend/images/no-image.jpg';
             session()->push('cart', $sesionData);
         }
+
         $data['cart'] = session('cart');
         $data['headerCartDetailsView'] = view('frontend.ajax.headerCartDetails',$data)->render();
         return $data;
+    }
+
+
+
+
+    public function delete($product_id)
+    {
+        $product = session('cart', $product_id)->first();
+        $product->destroy($product_id);
+        return redirect()->back();
     }
 }

@@ -1,7 +1,7 @@
 <div class="dropdown-cart-header">
     <span>{{ count($cart) }} Items</span>
 
-    <a href="cart.html">View Cart</a>
+    <a href="{{ route('cart') }}">View Cart</a>
 </div><!-- End .dropdown-cart-header -->
 <div class="dropdown-cart-products">
 
@@ -27,7 +27,7 @@
 
             <figure class="product-image-container">
                 <a href="{{ route('product.details',$item['product_id']) }}" class="product-image">
-                    <img src="{{ asset($item['image']) }}"" style="max-width: 78px; max-height: 65px" alt="product">
+                    <img src="{{ asset($item['image']) }}" style="max-width: 78px; max-height: 65px" alt="product">
                 </a>
                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
             </figure>
