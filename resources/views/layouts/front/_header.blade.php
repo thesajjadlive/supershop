@@ -185,7 +185,7 @@
                         </span>
 
                         <div class="dropdown-cart-action">
-                            <a href="checkout-shipping.html" class="btn btn-group-sm">Checkout</a>
+                            <a href="{{route('checkout')}}" class="btn btn-group-sm">Checkout</a>
                             <a href="{{ route('cart') }}" class="btn btn-group-sm">Cart</a>
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdownmenu-wrapper -->

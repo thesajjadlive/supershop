@@ -19,6 +19,10 @@ Route::get('products/{id?}','Front\ProductController@index')->name('front.produc
 Route::get('cart','Front\ProductController@cart')->name('cart');
 Route::get('clear-cart','Front\ProductController@clear')->name('clear.cart');
 
+Route::get('customer/store','CustomerController@index')->name('customer.store');
+
+Route::get('checkout','Front\CheckoutController@index')->name('checkout');
+
 Route::get('ajax/add-to-cart/{product_id}','Front\AjaxController@addToCart')->name('ajax.addToCart');
 Route::get('remove-cart/{product_id}','Front\AjaxController@delete')->name('remove.cart');
 
