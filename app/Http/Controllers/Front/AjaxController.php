@@ -14,6 +14,7 @@ class AjaxController extends Controller
     {
 
         $product = Product::findOrFail($product_id);
+
         if($product->stock > 0) {
             $sesionData['product_id'] = $product->id;
             $sesionData['name'] = $product->name;

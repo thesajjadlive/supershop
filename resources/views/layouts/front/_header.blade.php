@@ -158,7 +158,7 @@
                 <a href="{{ route('product.details',$item['product_id']) }}" class="product-image">
                     <img src="{{ asset($item['image']) }}" style="max-width: 78px; max-height: 65px" alt="product">
                 </a>
-                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
+                {{--<a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>--}}
             </figure>
         </div><!-- End .product -->
 
@@ -200,6 +200,10 @@
         <nav class="main-nav">
             <ul class="menu sf-arrows">
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
+                <li class="megamenu-container">
+                    <a href="{{ route('front.product.index') }}">All Products !</a>
+                </li>
+
                 <li>
                     <a href="{{ route('front.product.index') }}" class="sf-with-ul">Categories</a>
 
@@ -210,9 +214,17 @@
                         @endforeach
                     </ul>
                 </li>
-                <li class="megamenu-container">
-                    <a href="{{ route('front.product.index') }}">All Products !</a>
+
+                <li>
+                    <a href="{{ route('front.product.index') }}" class="sf-with-ul">Brands</a>
+
+                    <ul>
+                        @foreach($brands as $id=>$brand)
+                            <li><a href="{{ route('front.product.brand', $id) }}">{{ $brand }}</a></li>
+                        @endforeach
+                    </ul>
                 </li>
+
                 <li>
                     <a href="#" class="sf-with-ul">Pages</a>
 
@@ -228,8 +240,7 @@
                         <li><a href="#">Footer Types</a></li>
                     </ul>
                 </li>
-                <li class="float-right buy-effect"><a href="#"><span>Buy Porto!</span></a></li>
-                <li class="float-right"><a href="#">Special Offer!</a></li>
+                <li class="float-right buy-effect"><a href="#"><span>Special Offer <span class="tip tip-hot">Hot!</span></span></a></li>
             </ul>
         </nav>
     </div><!-- End .header-bottom -->

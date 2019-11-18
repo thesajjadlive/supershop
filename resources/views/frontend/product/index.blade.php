@@ -7,7 +7,7 @@
                 <h1 class="banner-title">
                     INCREDIBLE deals
                 </h1>
-                <a href="#" class="btn btn-primary">Shop Now</a>
+                <a href="{{ route('front.product.index') }}" class="btn btn-primary">Shop Now</a>
             </div><!-- End .banner-content -->
         </div><!-- End .banner -->
 

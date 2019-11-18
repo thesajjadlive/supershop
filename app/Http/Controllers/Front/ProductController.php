@@ -28,6 +28,21 @@ class ProductController extends Controller
         return view('frontend.product.index', $data);
     }
 
+
+    public function brand($id=false)
+    {
+        $products = new Product();
+        $products = $products->with(['brand','category','product_image']);
+
+        if ($id != false){
+            $products = $products->where('brand_id', $id);
+        }
+
+        $products = $products->orderBy('id','DESC')->paginate('12');
+        $data['products'] = $products;
+        return view('frontend.product.index', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

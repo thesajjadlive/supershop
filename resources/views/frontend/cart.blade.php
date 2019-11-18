@@ -28,6 +28,7 @@
 
                         @php
                             $total = 0;
+                            $shipping = 0;
                         @endphp
 
                         @if($cart != null)
@@ -35,7 +36,7 @@
                                <tr class="product-row">
                                    <td class="product-col">
                                        <figure class="product-image-container">
-                                           <a href="product.html" class="product-image">
+                                           <a href="{{ route('product.details',$item['product_id']) }}" class="product-image">
                                                <img src="{{ asset($item['image']) }}" style="max-width: 120px; max-height: 120px" alt="product">
                                            </a>
                                        </figure>
@@ -62,6 +63,7 @@
                                </tr>
 
                                @php
+                                   $shipping += $item['quantity'] * 30 ;
                                    $total += $item['quantity'] * $item['price'] ;
                                @endphp
                            @endforeach
@@ -114,11 +116,15 @@
                             <td>Tax</td>
                             <td>৳ 0.00</td>
                         </tr>
+                        <tr>
+                            <td>Shipping</td>
+                            <td>৳ {{ $shipping }}</td>
+                        </tr>
                         </tbody>
                         <tfoot>
                         <tr>
                             <td>Order Total</td>
-                            <td>৳ {{ $total }}</td>
+                            <td>৳ {{ $total+$shipping }}</td>
                         </tr>
                         </tfoot>
                     </table>

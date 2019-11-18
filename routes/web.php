@@ -4,25 +4,37 @@
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
 */
 
 
+/*
+-----------------------------
+Frontend Routes
+-----------------------------
+*/
 
+
+//home and product routes
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('product/{id}','Front\ProductController@details')->name('product.details');
 Route::get('products/{id?}','Front\ProductController@index')->name('front.product.index');
+Route::get('brand/{id?}','Front\ProductController@brand')->name('front.product.brand');
+
+//cart view routes
 Route::get('cart','Front\ProductController@cart')->name('cart');
 Route::get('clear-cart','Front\ProductController@clear')->name('clear.cart');
 
-Route::get('customer/store','CustomerController@index')->name('customer.store');
+//guest store and payment route
+Route::post('customer/store','CustomerController@store')->name('customer.store');
+Route::get('payment/{customerId}/{orderId}','Front\CheckoutController@payment')->name('payment');
 
+//checkout page route
 Route::get('checkout','Front\CheckoutController@index')->name('checkout');
 
+//add to cart route
 Route::get('ajax/add-to-cart/{product_id}','Front\AjaxController@addToCart')->name('ajax.addToCart');
 Route::get('remove-cart/{product_id}','Front\AjaxController@delete')->name('remove.cart');
 

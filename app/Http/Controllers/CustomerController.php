@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Order;
+use App\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CustomerController extends Controller
 {
@@ -35,7 +39,68 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'street_address' => 'required',
+            'district' => 'required',
+            'zip' => 'required',
+        ]);
+
+         //Transaction start
+         DB::beginTransaction();
+         try {
+
+             //customer store
+             $data = $request->except('_token', 'shipping-method');
+             $customer_id = Customer::insertGetId($data);
+
+
+             //order
+             $order['order_number'] = 'OID-' . time();
+             $order['customer_id'] = $customer_id;
+             $order['date'] = now();
+             $order_id = Order::insertGetId($order);
+
+             //dd($order_id);
+
+
+             //order details
+             $cart = session('cart');
+             $total = 0;
+             if (count($cart)) {
+                 foreach ($cart as $item) {
+                     $ordre_details['order_id'] = $order_id;
+                     $ordre_details['product_id'] = $item['product_id'];
+                     $ordre_details['product_name'] = $item['name'];
+                     $ordre_details['price'] = $item['price'];
+                     $ordre_details['quantity'] = $item['quantity'];
+                     $ordre_details['shipping'] = $item['quantity'] * 30;
+                     $ordre_details['total'] = $item['quantity'] * $item['price'];
+
+                     OrderDetail::create($ordre_details);
+
+                     $total += $ordre_details['total']+$ordre_details['shipping'];
+                 }
+             }
+
+             Order::findOrFail($order_id)->update(['total_price' => $total]);
+
+        //Transaction end
+            DB::commit();
+            return redirect()->route('payment',[$customer_id,$order_id]);
+
+         }catch (\Exception $exception)
+         {
+             DB::rollBack();
+             Log::error('CustomerController@store Message-'.$exception->getMessage());
+             session()->flash('message','Something Went Wrong');
+             return redirect()->back();
+         }
+        //Transaction end
+
     }
 
     /**

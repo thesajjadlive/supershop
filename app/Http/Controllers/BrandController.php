@@ -122,7 +122,7 @@ class BrandController extends Controller
             'name'=>'required',
             'status'=>'required'
         ]);
-        $brand_data = $request->except('_token','_method');
+        $brand_data = $request->except('_token','_method','logo');
 
         if($request->hasFile('logo')){
             $file = $request->file('logo');
