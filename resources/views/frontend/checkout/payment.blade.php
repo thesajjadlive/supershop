@@ -38,7 +38,7 @@
                                 @foreach($cart as $item)
 
                                     <tr>
-                                        <td class="product-col">
+                                        <td class="product-col" >
                                             <div>
                                                 <h2 class="product-title">
                                                     <a>{{ ucfirst($item['name']) }}</a>
@@ -47,7 +47,7 @@
                                                 <span class="product-qty">Qty: {{ $item['quantity'] }}</span>
                                             </div>
                                         </td>
-                                        <td class="price-col"> {{ $item['quantity'] * $item['price'] }}/-</td>
+                                        <td class="price-col text-right"> {{ $item['quantity'] * $item['price'] }}/-</td>
                                     </tr>
 
                                     @php
@@ -59,7 +59,7 @@
                             @endif
                             <tr>
                                 <td>Shipping</td>
-                                <td>{{ $shipping }}/-</td>
+                                <td class="text-right">{{ $shipping }}/-</td>
                             </tr>
                             </tbody>
                         </table>
@@ -121,6 +121,7 @@
                                 <td>
                                     <button class="btn btn-sm btn-outline-secondary">Pay Now</button>
 
+                                    <a class="btn btn-sm btn-outline-secondary" href="JavaScript:window.print();">Print Page</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -161,7 +162,14 @@
 
 
 @push('custom-css')
-
+    <style type="text/css">
+        @media print
+        {
+            footer * { display: none; }
+            #printcontent * { visibility: visible; }
+            #printcontent { position: absolute; top: 50px; left: 30px; }
+        }
+    </style>
 @endpush
 
 

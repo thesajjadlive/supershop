@@ -75,7 +75,7 @@ class CustomerController extends Controller
                  foreach ($cart as $item) {
                      $product = Product::findOrFail($item['product_id']);
                      if ($product->stock>=$item['quantity']){
-                    // $ordre_details['order_id'] = $order_id;
+                     $ordre_details['order_id'] = $order_id;
                      $ordre_details['product_id'] = $item['product_id'];
                      $ordre_details['product_name'] = $item['name'];
                      $ordre_details['price'] = $item['price'];
@@ -86,9 +86,15 @@ class CustomerController extends Controller
                      OrderDetail::create($ordre_details);
 
                      $total += $ordre_details['total']+$ordre_details['shipping'];
+
+                     //product stock update
+                         $product->stock = $product->stock-$item['quantity'];
+                         $product->save();
                  }
+                     else{
                      session()->flash('message',ucfirst($item['name']).' '.'is out of stock');
                      return redirect()->route('cart');
+                     }
                  }
              }
 
