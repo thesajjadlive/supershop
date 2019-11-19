@@ -10,6 +10,12 @@
         </div><!-- End .container -->
     </nav>
 
+    @if(session('message'))
+        <div class="text-center" style="margin: 20px 0 20px 0">
+            <span class="alert alert-danger">{{ session('message') }}</span>
+        </div>
+    @endif
+
 
     <div class="container">
         <div class="row">

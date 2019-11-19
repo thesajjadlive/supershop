@@ -19,16 +19,12 @@
                 <span>Payments</span>
             </li>
         </ul>
-        <div class="row">
+        <div class="row" >
             <div class="col-lg-4">
                 <div class="order-summary">
                     <h3>Summary</h3>
 
-                    <h4>
-                        <a data-toggle="collapse" href="#order-cart-section" class="collapsed" role="button" aria-expanded="false" aria-controls="order-cart-section">{{ $cart!= null ?count($cart):'No' }} products in Cart</a>
-                    </h4>
-
-                    <div class="collapse" id="order-cart-section">
+                    <div class="" id="order-cart-section">
                         <table class="table table-mini-cart">
                             <tbody>
 
@@ -43,14 +39,9 @@
 
                                     <tr>
                                         <td class="product-col">
-                                            <figure class="product-image-container">
-                                                <a href="{{ route('product.details',$item['product_id']) }}" class="product-image">
-                                                    <img src="{{ asset($item['image']) }}" style="max-width: 73px; max-height: 73px"  alt="product">
-                                                </a>
-                                            </figure>
                                             <div>
                                                 <h2 class="product-title">
-                                                    <a href="{{ route('product.details',$item['product_id']) }}">{{ $item['name'] }}</a>
+                                                    <a>{{ ucfirst($item['name']) }}</a>
                                                 </h2>
 
                                                 <span class="product-qty">Qty: {{ $item['quantity'] }}</span>
@@ -61,7 +52,7 @@
 
                                     @php
                                         $shipping += $item['quantity'] * 30 ;
-                               $total += $item['quantity'] * $item['price'] ;
+                                        $total += $item['quantity'] * $item['price'] ;
                                     @endphp
 
                                 @endforeach
@@ -89,7 +80,7 @@
                 </div><!-- End .checkout-info-box -->
             </div><!-- End .col-lg-4 -->
 
-            <div class="col-lg-8 order-lg-first">
+            <div class="col-lg-8 order-lg-first" id="printcontent">
                 <div class="checkout-payment">
                     <h2 class="step-title">Ship To:</h2>
 
@@ -103,7 +94,7 @@
                             </tr>
                             <tr>
                                 <th>Customer Name</th>
-                                <td>{{ $customer->first_name.' '.$customer->last_name }}</td>
+                                <td>{{ ucfirst($customer->first_name).' '.ucfirst($customer->last_name) }}</td>
                             </tr>
                             <tr>
                                 <th>Mobile</th>
@@ -127,7 +118,10 @@
                             </tr>
                             <tr>
                                 <th> </th>
-                                <td><button class="btn btn-sm btn-outline-secondary">Pay Now</button></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary">Pay Now</button>
+
+                                </td>
                             </tr>
                             </tbody>
                         </table>

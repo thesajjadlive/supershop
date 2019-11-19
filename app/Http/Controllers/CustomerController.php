@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Order;
 use App\OrderDetail;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -72,7 +73,9 @@ class CustomerController extends Controller
              $total = 0;
              if (count($cart)) {
                  foreach ($cart as $item) {
-                     $ordre_details['order_id'] = $order_id;
+                     $product = Product::findOrFail($item['product_id']);
+                     if ($product->stock>=$item['quantity']){
+                    // $ordre_details['order_id'] = $order_id;
                      $ordre_details['product_id'] = $item['product_id'];
                      $ordre_details['product_name'] = $item['name'];
                      $ordre_details['price'] = $item['price'];
@@ -83,6 +86,9 @@ class CustomerController extends Controller
                      OrderDetail::create($ordre_details);
 
                      $total += $ordre_details['total']+$ordre_details['shipping'];
+                 }
+                     session()->flash('message',ucfirst($item['name']).' '.'is out of stock');
+                     return redirect()->route('cart');
                  }
              }
 

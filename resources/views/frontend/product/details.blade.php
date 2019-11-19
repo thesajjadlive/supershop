@@ -88,9 +88,9 @@
                                             <input class="horizontal-quantity form-control" type="text">
                                         </div><!-- End .product-single-qty -->
 
-                                        <a href="#" class="paction add-cart" product-id="{{ $product->id }}" url="{{ route('ajax.addToCart',$product->id) }}" title="Add to Cart">
-                                            <span>Add to Cart</span>
-                                        </a>
+                                        <button class="{{ ($product->stock)==0?'btn paction add-cart disabled':'btn paction add-cart' }}" product-id="{{ $product->id }}" url="{{ route('ajax.addToCart',$product->id) }}" title="Add to Cart">
+                                            <span>{{ ($product->stock)==0?'Out of Stock': 'Add to Cart'}}</span>
+                                        </button>
                                     </div><!-- End .product-action -->
 
                                     <div class="product-single-share">
@@ -285,8 +285,8 @@
 
                                 <div class="product-action">
 
-                                    <button class="btn paction add-cart" product-id="{{ $product->id }}" url="{{ route('ajax.addToCart',$product->id) }}" title="Add to Cart">
-                                        <span>Add to Cart</span>
+                                    <button class="{{ ($product->stock)==0?'btn add-cart disabled':'btn add-cart' }}" product-id="{{ $product->id }}" url="{{ route('ajax.addToCart',$product->id) }}" title="Add to Cart">
+                                        <span>{{ ($product->stock)==0?'Out of Stock': 'Add to Cart'}}</span>
                                     </button>
 
                                 </div><!-- End .product-action -->
