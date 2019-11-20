@@ -18,10 +18,18 @@ Frontend Routes
 
 
 //home and product routes
+use App\Mail\OrderPlaceMail;
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('product/{id}','Front\ProductController@details')->name('product.details');
 Route::get('products/{id?}','Front\ProductController@index')->name('front.product.index');
 Route::get('brand/{id?}','Front\ProductController@brand')->name('front.product.brand');
+
+Route::get('sendmail',function ()
+{
+    Mail::to('sajjadkd1@gmail.com')->send(new OrderPlaceMail());
+});
 
 //cart view routes
 Route::get('cart','Front\ProductController@cart')->name('cart');
