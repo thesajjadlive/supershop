@@ -75,4 +75,26 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+
+    public function find(Request $request)
+    {
+        $product = new Product();
+
+        //search product
+        if ($request->has('q') && $request->q != null){
+            $product = $product->where('name','like','%'.$request->q.'%');
+        }
+
+        //search via category
+        if ($request->has('cat') && $request->cat != null){
+            $product = $product->where('category_id',$request->cat);
+        }
+
+
+        $product = $product->orderBy('id','DESC')->paginate(12);
+
+        $data['products'] =$product;
+        return view('frontend.product.index', $data);
+    }
+
 }
