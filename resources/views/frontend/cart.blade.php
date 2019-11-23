@@ -52,7 +52,12 @@
                                    </td>
                                    <td>৳ {{ $item['price'] }}</td>
                                    <td>
-                                       <input class="vertical-quantity form-control" type="text">
+                                       {{ $item['quantity'] }}
+                                       {{--<form action="{{ route('update.cart',$item['product_id']) }}" method="post">
+                                           @csrf
+                                           <input name="quantity" class="vertical-quantity form-control" value="{{ $item['quantity'] }}" type="text">
+                                           <input type="submit" name="submit" class="btn btn-sm d-inline" value="u">
+                                       </form>--}}
                                    </td>
                                    <td>৳ {{ $item['price']*$item['quantity'] }}</td>
                                </tr>

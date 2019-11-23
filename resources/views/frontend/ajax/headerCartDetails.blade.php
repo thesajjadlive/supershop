@@ -29,7 +29,7 @@
                 <a href="{{ route('product.details',$item['product_id']) }}" class="product-image">
                     <img src="{{ asset($item['image']) }}" style="max-width: 78px; max-height: 65px" alt="product">
                 </a>
-                {{--<a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>--}}
+                <a href="{{ route('remove.cart',$item['product_id']) }}" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
             </figure>
         </div><!-- End .product -->
 

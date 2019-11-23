@@ -45,6 +45,7 @@ Route::get('checkout','Front\CheckoutController@index')->name('checkout');
 //add to cart route
 Route::get('ajax/add-to-cart/{product_id}','Front\AjaxController@addToCart')->name('ajax.addToCart');
 Route::get('remove-cart/{product_id}','Front\AjaxController@delete')->name('remove.cart');
+Route::post('update-cart/{product_id}','Front\AjaxController@update')->name('update.cart');
 
 
 

@@ -13,29 +13,90 @@ class AjaxController extends Controller
     public function addToCart($product_id)
     {
 
+
+
         $product = Product::findOrFail($product_id);
 
-        if($product->stock > 0) {
-            $sesionData['product_id'] = $product->id;
-            $sesionData['name'] = $product->name;
-            $sesionData['quantity'] = 1;
-            $sesionData['price'] = $product->price;
-            $sesionData['image'] = isset($product->product_image[0]) ? $product->product_image[0]->file_path : 'assets/frontend/images/no-image.jpg';
-            session()->push('cart', $sesionData);
-        }
+
+        $carts = session('cart');
+           $cartStatus = true;
+            if($carts != null)
+            {
+                foreach ($carts as $id=>$cart)
+                {
+                    if($cart['product_id']== $product->id){
+                        $carts[$id]['quantity'] = $cart['quantity']+1;
+                        session()->remove('cart');
+                        session()->put('cart',$carts);
+                        $cartStatus = false;
+                        break;
+                    }
+                }
+            }
+            if($cartStatus && $product->stock > 0){
+                $sesionData['product_id'] = $product->id;
+                $sesionData['name'] = $product->name;
+                $sesionData['quantity'] = 1;
+                $sesionData['price'] = $product->price;
+                $sesionData['image'] = isset($product->product_image[0]) ? $product->product_image[0]->file_path : 'assets/frontend/images/no-image.jpg';
+                session()->push('cart', $sesionData);
+            }
+
+            /*if($product->stock > 0) {
+                $sesionData['product_id'] = $product->id;
+                $sesionData['name'] = $product->name;
+                $sesionData['quantity'] = 1;
+                $sesionData['price'] = $product->price;
+                $sesionData['image'] = isset($product->product_image[0]) ? $product->product_image[0]->file_path : 'assets/frontend/images/no-image.jpg';
+                session()->push('cart', $sesionData);
+            }*/
+
+
+
 
         $data['cart'] = session('cart');
+//            dd( $data['cart']);
         $data['headerCartDetailsView'] = view('frontend.ajax.headerCartDetails',$data)->render();
         return $data;
     }
 
 
 
-
-    public function delete($product_id)
+    public function update( Request $request, $product_id)
     {
-        $product = session('cart', $product_id)->first();
-        $product->destroy($product_id);
+        $carts = session('cart');
+        if($carts != null)
+        {
+            foreach ($carts as $id=>$cart)
+            {
+                if($cart['product_id']== $product_id){
+                    $carts[$id]['quantity'] = $request->quantity;
+                    session()->remove('cart');
+                    session()->put('cart',$carts);
+                    break;
+                }
+            }
+        }
+        return redirect()->back();
+    }
+
+
+
+    public function delete( $product_id)
+    {
+        $carts = session('cart');
+        if($carts != null)
+        {
+            foreach ($carts as $id=>$cart)
+            {
+                if($cart['product_id']== $product_id){
+                    unset($carts[$id]);
+                    session()->remove('cart');
+                    session()->put('cart',$carts);
+                    break;
+                }
+            }
+        }
         return redirect()->back();
     }
 }

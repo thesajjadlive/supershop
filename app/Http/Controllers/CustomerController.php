@@ -59,7 +59,7 @@ class CustomerController extends Controller
              $customer_id = Customer::insertGetId($data);
 
 
-             //order
+             //order store
              $order['order_number'] = 'OID-' . time();
              $order['customer_id'] = $customer_id;
              $order['date'] = now();
@@ -68,7 +68,7 @@ class CustomerController extends Controller
              //dd($order_id);
 
 
-             //order details
+             //order details store
              $cart = session('cart');
              $total = 0;
              if (count($cart)) {
