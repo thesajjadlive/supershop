@@ -151,62 +151,14 @@
 
                 <aside class="sidebar-home col-lg-3">
                     <div class="widget widget-cats">
-                        <h3 class="widget-title">Categories</h3>
+                        <h3 class="widget-title">Latest Categories</h3>
 
                         <ul class="catAccordion">
-                            <li>
-                                <a href="category.html">Fashion</a>
-                                <button class="accordion-btn collapsed" type="button" data-toggle="collapse" data-target="#accordion-ul-1" aria-expanded="false" aria-controls="accordion-ul-1"></button>
-
-                                <ul class="collapse" id="accordion-ul-1">
-                                    <li><a href="#">WOMEN CLOTHES</a></li>
-                                    <li><a href="#">MEN CLOTHES</a></li>
-                                    <li><a href="#">HOES</a></li>
-                                    <li><a href="#">Accessories</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="category.html">Electronics </a>
-                                <button class="accordion-btn collapsed" type="button" data-toggle="collapse" data-target="#accordion-ul-2" aria-expanded="false" aria-controls="accordion-ul-2"></button>
-
-                                <ul class="collapse" id="accordion-ul-2">
-                                    <li><a href="#">Computers</a></li>
-                                    <li><a href="#">Mobile Phones</a></li>
-                                    <li><a href="#">Laptops</a></li>
-                                    <li><a href="#">Tablets</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="category.html">Gifts</a>
-                            </li>
-                            <li>
-                                <a href="category.html">Home & Garden</a>
-                            </li>
-                            <li>
-                                <a href="category.html">Music</a>
-                            </li>
-                            <li>
-                                <a href="category.html">Motors</a>
-                                <button class="accordion-btn collapsed" type="button" data-toggle="collapse" data-target="#accordion-ul-3" aria-expanded="false" aria-controls="accordion-ul-3"></button>
-
-                                <ul class="collapse" id="accordion-ul-3">
-                                    <li><a href="#">Sub Category</a></li>
-                                    <li><a href="#">Sub Category</a></li>
-                                    <li><a href="#">Sub Category</a></li>
-                                    <li><a href="#">Sub Category</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="category.html">Clothes</a>
-                                <button class="accordion-btn collapsed" type="button" data-toggle="collapse" data-target="#accordion-ul-4" aria-expanded="false" aria-controls="accordion-ul-4"></button>
-
-                                <ul class="collapse" id="accordion-ul-4">
-                                    <li><a href="#">Sub Category</a></li>
-                                    <li><a href="#">Sub Category</a></li>
-                                    <li><a href="#">Sub Category</a></li>
-                                    <li><a href="#">Sub Category</a></li>
-                                </ul>
-                            </li>
+                            @foreach($categories as $id=>$category)
+                                <li>
+                                    <a href="{{ route('front.product.index', $category->id) }}">{{ $category->name }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="widget">
