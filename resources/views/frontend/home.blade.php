@@ -25,23 +25,22 @@
                             </div><!-- End .home-slide -->
                         </div><!-- End .home-slider -->
                     </div><!-- End .col-lg-8 -->
-                    {{--assets/frontend/images/banners/banner-1.jpg--}}
-                    <div class="col-lg-4 top-banners">
-                        <div class="banner banner-image">
+                    <div class="col-lg-4">
+                        <div class="banner banner-image" style="margin-bottom: 10px">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/lazy.png') }}" alt="banner">
+                                <img src="{{ asset('assets/frontend/images/banners/banner-1.jpg') }}" alt="banner">
                             </a>
                         </div><!-- End .banner -->
 
-                        <div class="banner banner-image">
+                        <div class="banner banner-image" style="margin-bottom: 10px">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/lazy.png') }}" alt="banner">
+                                <img src="{{ asset('assets/frontend/images/banners/banner-2.jpg') }}" alt="banner">
                             </a>
                         </div><!-- End .banner -->
 
-                        <div class="banner banner-image">
+                        <div class="banner banner-image" style="margin-bottom: 10px">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/lazy.png') }}" alt="banner">
+                                <img src="{{ asset('assets/frontend/images/banners/banner-3.jpg') }}" alt="banner">
                             </a>
                         </div><!-- End .banner -->
                     </div><!-- End .col-lg-4 -->
@@ -254,7 +253,7 @@
 
 
 @push('library-js')
-    <script src="{{ asset('assets/frontend/js/bootstrap.bundle.min.js') }}"></script>
+
 @endpush
 
 

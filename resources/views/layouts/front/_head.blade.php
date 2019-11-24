@@ -9,13 +9,11 @@
 <meta name="author" content="SW-THEMES">
 
 <!-- Favicon -->
+<link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome.css') }}">
 <link rel="icon" type="image/x-icon" href="{{ asset('assets/frontend/images/icons/favicon.ico') }}">
 
 <!-- Bootstrap 4.0-->
-<link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
-
-<link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome.css') }}">
 
 
 @stack('library-css')
