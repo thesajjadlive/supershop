@@ -25,23 +25,23 @@
                             </div><!-- End .home-slide -->
                         </div><!-- End .home-slider -->
                     </div><!-- End .col-lg-8 -->
-
+                    {{--assets/frontend/images/banners/banner-1.jpg--}}
                     <div class="col-lg-4 top-banners">
                         <div class="banner banner-image">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/banners/banner-1.jpg') }}" alt="banner">
+                                <img src="{{ asset('assets/frontend/images/lazy.png') }}" alt="banner">
                             </a>
                         </div><!-- End .banner -->
 
                         <div class="banner banner-image">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/banners/banner-2.jpg') }}" alt="banner">
+                                <img src="{{ asset('assets/frontend/images/lazy.png') }}" alt="banner">
                             </a>
                         </div><!-- End .banner -->
 
                         <div class="banner banner-image">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/banners/banner-3.jpg') }}" alt="banner">
+                                <img src="{{ asset('assets/frontend/images/lazy.png') }}" alt="banner">
                             </a>
                         </div><!-- End .banner -->
                     </div><!-- End .col-lg-4 -->
@@ -55,8 +55,8 @@
                     <i class="icon-shipping"></i>
 
                     <div class="info-box-content">
-                        <h4>FREE SHIPPING & RETURN</h4>
-                        <p>Free shipping on all orders over $99.</p>
+                        <h4>FAST SHIPPING & RETURN</h4>
+                        <p>Free shipping on all orders over 1000 Tk.</p>
                     </div><!-- End .info-box-content -->
                 </div><!-- End .info-box -->
 
@@ -254,7 +254,7 @@
 
 
 @push('library-js')
-
+    <script src="{{ asset('assets/frontend/js/bootstrap.bundle.min.js') }}"></script>
 @endpush
 
 

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Mail\OrderPlaceMail;
 use App\Order;
 use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerController extends Controller
 {
@@ -49,6 +51,9 @@ class CustomerController extends Controller
             'district' => 'required',
             'zip' => 'required',
         ]);
+
+
+
 
          //Transaction start
          DB::beginTransaction();
@@ -102,6 +107,11 @@ class CustomerController extends Controller
 
         //Transaction end
             DB::commit();
+
+            //Confirmation mail send
+             $customer = Customer::findOrFail($customer_id);
+            Mail::to($customer->email)->send(new OrderPlaceMail($order_id));
+
             return redirect()->route('payment',[$customer_id,$order_id]);
 
          }catch (\Exception $exception)

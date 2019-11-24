@@ -13,6 +13,7 @@
 
 <!-- Bootstrap 4.0-->
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome.css') }}">
 

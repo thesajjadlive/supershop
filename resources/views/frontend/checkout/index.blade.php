@@ -184,7 +184,7 @@
                                         <span class="product-qty">Qty: {{ $item['quantity'] }}</span>
                                     </div>
                                 </td>
-                                <td class="price-col"> {{ $item['quantity'] * $item['price'] }}/-</td>
+                                <td class="price-col text-right"> {{ $item['quantity'] * $item['price'] }}/-</td>
                             </tr>
 
                             @php
@@ -196,7 +196,7 @@
                             @endif
                             <tr>
                                 <td>Shipping</td>
-                                <td>{{ $shipping }}/-</td>
+                                <td class="text-right">{{ $shipping }}/-</td>
                             </tr>
                             </tbody>
                         </table>

@@ -8,4 +8,5 @@
 <!-- Main JS File -->
 <script src="{{ asset('assets/frontend/js/main.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/cart.js') }}"></script>
+
 @stack('custom-js')
