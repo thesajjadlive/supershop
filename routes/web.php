@@ -18,6 +18,8 @@ Frontend Routes
 
 
 //home and product routes
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('product/{id}','Front\ProductController@details')->name('product.details');
 Route::get('products/{id?}','Front\ProductController@index')->name('front.product.index');
@@ -35,7 +37,7 @@ Route::post('customer/store','CustomerController@store')->name('customer.store')
 Route::get('payment/{customerId}/{orderId}','Front\CheckoutController@payment')->name('payment');
 
 //checkout page route
-Route::get('checkout','Front\CheckoutController@index')->name('checkout');
+Route::get('checkout','Front\CheckoutController@index')->name('checkout')->middleware('customer');
 
 //add to cart route
 Route::get('ajax/add-to-cart/{product_id}','Front\AjaxController@addToCart')->name('ajax.addToCart');
@@ -43,6 +45,28 @@ Route::get('remove-cart/{product_id}','Front\AjaxController@delete')->name('remo
 Route::post('update-cart/{product_id}','Front\AjaxController@update')->name('update.cart');
 
 
+//testing routes
+Route::get('test',function (){
+    return Auth::guard('customer')->user()->id;
+});
+Route::get('llogin',function (){
+    return view('not_found');
+});
+//testing routes
+
+
+//Customer multi-auth routes
+Route::get('registration', 'Customer\RegisterController@showRegistrationForm')->name('user.register');
+Route::post('registration', 'CustomerController@create')->name('user.register.submit');
+
+Route::get('signin', 'Customer\LoginController@showLoginForm')->name('user.login');
+Route::post('signin', 'Customer\LoginController@login')->name('user.login.submit');
+Route::get('signout', 'Customer\LoginController@logout')->name('user.logout');
+Route::get('reset', 'Customer\ForgotPasswordController@showLinkRequestForm')->name('user.password.request');
+Route::post('reset/pass', 'Customer\ForgotPasswordController@sendResetLinkEmail')->name('user.password.email');
+Route::get('pass/reset/{token}', 'Customer\ResetPasswordController@showResetForm')->name('user.password.reset');
+Route::post('pass/reset', 'Customer\ResetPasswordController@reset')->name('user.password.update');
+//Customer multi-auth routes
 
 
 

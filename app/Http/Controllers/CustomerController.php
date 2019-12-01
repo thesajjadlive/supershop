@@ -8,6 +8,7 @@ use App\Order;
 use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -29,9 +30,21 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'street_address' => 'required',
+            'district' => 'required',
+            'zip' => 'required',
+        ]);
+
+        //customer store
+        $data = $request->except('_token', 'shipping-method');
+        Customer::create($data);
     }
 
     /**
@@ -42,26 +55,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'street_address' => 'required',
-            'district' => 'required',
-            'zip' => 'required',
-        ]);
-
-
-
 
          //Transaction start
          DB::beginTransaction();
          try {
 
-             //customer store
-             $data = $request->except('_token', 'shipping-method');
-             $customer_id = Customer::insertGetId($data);
+             //customer id
+             $customer_id = Auth::guard('customer')->user()->id;
 
 
              //order store

@@ -60,7 +60,12 @@
                         <li><a href="#">MY WISHLIST </a></li>
                         <li><a href="blog.html">BLOG</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#" class="login-link">LOG IN</a></li>
+                        @if(Auth::guard('customer')->user())
+                        <li><a href="{{ route('user.logout') }}">SIGN OUT</a></li>
+                            @else
+                        <li><a href="{{ route('user.login') }}">SIGN In</a></li>
+                            @endif
+
                     </ul>
                 </div><!-- End .header-menu -->
             </div><!-- End .header-dropown -->
