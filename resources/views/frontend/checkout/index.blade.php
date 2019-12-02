@@ -13,10 +13,10 @@
     <div class="container">
         <ul class="checkout-progress-bar">
             <li class="active">
-                <span>Shipping</span>
+                <span>Confirmation</span>
             </li>
             <li>
-                <span>Payments</span>
+                <span>Completed</span>
             </li>
         </ul>
 
@@ -28,21 +28,13 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <ul class="checkout-steps">
+                <ul>
                     <li>
-                        <h2 class="step-title">Shipping Address</h2>
+                        <h2 class="step-title">Shipping Method</h2>
 
-                        <form action="#">
-
-                            <div class="form-group required-field">
-                                <label>Password </label>
-                                <input type="password" class="form-control" required>
-                            </div><!-- End .form-group -->
-
+                        <form action="#" class="form for">
                             <div class="checkout-step-shipping">
-                                <h2 class="step-title">Shipping Method</h2>
-
-                                <table class="table tablel">
+                                <table class="table">
                                     <tbody>
                                     <tr>
                                         <td><input type="radio" name="shipping-method" value="normal" checked></td>
@@ -56,24 +48,17 @@
                         </form>
 
 
+                        <h2 class="step-title">Payment Method</h2>
+
                         <form action="#">
-
                             <div class="checkout-step-shipping">
-                                <h2 class="step-title">Payment Method</h2>
-
-                                <table class="table table-step-shipping">
+                                <table class="table">
                                     <tbody>
                                     <tr>
                                         <td><input type="radio" name="shipping-method" value="normal" checked></td>
                                         <td>Cash On Delivery</td>
                                         <td></td>
                                         <td>Available</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="shipping-method" value="normal"></td>
-                                        <td>Online</td>
-                                        <td>Bkash/Card</td>
-                                        <td>UpComing</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -84,7 +69,7 @@
                             @csrf
 
                             <div>
-                                        <button type="submit" class="btn btn-primary float-right">Place Order</button>
+                                        <button type="submit" class="btn btn-primary float-right">Confirm Order</button>
                             </div><!-- End .checkout-steps-action -->
 
                         </form>
@@ -102,7 +87,7 @@
                         <a data-toggle="collapse" href="#order-cart-section" class="collapsed" role="button" aria-expanded="false" aria-controls="order-cart-section">{{ $cart!= null ?count($cart):'No' }} products in Cart</a>
                     </h4>
 
-                    <div class="collapse" id="order-cart-section">
+                    <div id="order-cart-section">
                         <table class="table table-mini-cart">
                             <tbody>
 

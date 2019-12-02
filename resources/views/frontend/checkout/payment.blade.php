@@ -5,7 +5,7 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Payment</li>
+                <li class="breadcrumb-item active" aria-current="page">Payments</li>
             </ol>
         </div><!-- End .container -->
     </nav>
@@ -13,74 +13,15 @@
     <div class="container">
         <ul class="checkout-progress-bar">
             <li>
-                <span>Shipping</span>
+                <span>Confirmation</span>
             </li>
             <li class="active">
-                <span>Payments</span>
+                <span>Completed</span>
             </li>
         </ul>
         <div class="row" >
-            <div class="col-lg-4">
-                <div class="order-summary">
-                    <h3>Summary</h3>
-
-                    <div class="" id="order-cart-section">
-                        <table class="table table-mini-cart">
-                            <tbody>
-
-                            @php
-                                $total = 0;
-                                $shipping = 0;
-                            @endphp
-
-
-                            @if($cart != null)
-                                @foreach($cart as $item)
-
-                                    <tr>
-                                        <td class="product-col" >
-                                            <div>
-                                                <h2 class="product-title">
-                                                    <a>{{ ucfirst($item['name']) }}</a>
-                                                </h2>
-
-                                                <span class="product-qty">Qty: {{ $item['quantity'] }}</span>
-                                            </div>
-                                        </td>
-                                        <td class="price-col text-right"> {{ $item['quantity'] * $item['price'] }}/-</td>
-                                    </tr>
-
-                                    @php
-                                        $shipping += $item['quantity'] * 30 ;
-                                        $total += $item['quantity'] * $item['price'] ;
-                                    @endphp
-
-                                @endforeach
-                            @endif
-                            <tr>
-                                <td>Shipping</td>
-                                <td class="text-right">{{ $shipping }}/-</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div><!-- End #order-cart-section -->
-                    <div class="dropdown-cart-total">
-                        <span>Total</span>
-
-                        <span class="cart-total-price">৳ {{ $total+$shipping }}/-</span>
-                    </div>
-                </div><!-- End .order-summary -->
-
-
-                <div class="checkout-info-box">
-                    <h3 class="step-title">Shipping Method:
-                    </h3>
-
-                    <p>Flat Rate - Fixed</p>
-                </div><!-- End .checkout-info-box -->
-            </div><!-- End .col-lg-4 -->
-
-            <div class="col-lg-8 order-lg-first" id="printcontent">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 " id="printcontent">
                 <div class="checkout-payment">
                     <h2 class="step-title">Ship To:</h2>
 
@@ -106,27 +47,30 @@
                             </tr>
                             <tr>
                                 <th>Shipping Address</th>
-                                <td>{{ $customer->street_address }}</td>
-                            </tr>
-                            <tr>
-                                <th> </th>
-                                <td>{{ $customer->district.'  '.$customer->zip }}</td>
+                                <td>{{ $customer->street_address.', '.$customer->district.'  '.$customer->zip }}</td>
                             </tr>
                             <tr>
                                 <th>Payable Amount</th>
                                 <td>{{ $order->total_price }}/-</td>
                             </tr>
                             <tr>
+                                <th>Status</th>
+                                <td>{{ ucfirst($order->payment_status) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Payment Type</th>
+                                <td>{{ ucfirst($order->payment_type) }}</td>
+                            </tr>
+                            <tr>
                                 <th> </th>
                                 <td>
-                                    <button class="btn btn-sm btn-outline-secondary">Pay Now</button>
-
                                     <a class="btn btn-sm btn-outline-secondary" href="JavaScript:window.print();">Print Page</a>
+
+                                    <button class="btn btn-sm btn-outline-secondary">Make Payment</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-
 
                     </div><!-- End .checkout-info-box -->
 
@@ -146,6 +90,7 @@
                 </div><!-- End .checkout-discount -->
 
             </div><!-- End .col-lg-8 -->
+
         </div><!-- End .row -->
     </div><!-- End .container -->
 
@@ -165,7 +110,7 @@
     <style type="text/css">
         @media print
         {
-            footer * { display: none; }
+            body * { visibility: hidden; }
             #printcontent * { visibility: visible; }
             #printcontent { position: absolute; top: 50px; left: 30px; }
         }

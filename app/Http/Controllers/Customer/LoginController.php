@@ -55,7 +55,7 @@ class LoginController extends Controller
             'password'=>$request->password,
         ];
         if(Auth::guard('customer')->attempt($credential, $request->member)){
-            return redirect()->intended(route('home'));
+            return redirect()->route('home');
         }
         session()->flash('message', 'Invalid Email or Password');
         return redirect()->back()->withInput(['email'=>$request->email]);

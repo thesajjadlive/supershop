@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Customer;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\OrderDetail;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -28,8 +29,10 @@ class CheckoutController extends Controller
     {
         $data['customer'] = Customer::findOrFail($customer_id);
         $data['order'] = Order::findOrFail($order_id);
+        $data['details'] = OrderDetail::findOrFail($order_id);
         $data['cart'] = session('cart');
-
+        session()->remove('cart');
+        session()->flash('message','Order has been placed successfully');
         return view('frontend.checkout.payment',$data);
     }
 }

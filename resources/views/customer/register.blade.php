@@ -76,27 +76,8 @@
                         <div class="p1-1 text-danger">{{ $message }}</div>
                         @enderror
 
-
-                        <div class="checkout-step-shipping">
-                            <h2 class="step-title">Shipping Method</h2>
-
-                            <table class="table table-step-shipping">
-                                <tbody>
-                                <tr>
-                                    <td><input type="radio" name="shipping-method" value="normal" checked></td>
-                                    <td>Flat Rate</td>
-                                    <td><strong>৳ 30.00</strong></td>
-                                    <td>Best Way</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <span class="text-danger">Make Sure, Your contact and address is correct before Place Order !!</span>
-                        <br><!-- End .checkout-step-shipping -->
-                        <br>
-
                         <div class="checkout-steps-action">
-                            <button type="submit" class="btn btn-primary float-right">Place Order</button>
+                            <button type="submit" class="btn btn-primary float-right">Register</button>
                         </div><!-- End .checkout-steps-action -->
 
                     </form>

@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->timestamp('date');
             $table->enum('status',['pending','processing','shipping','delivered'])->default('pending');
             $table->enum('payment_status',['paid','unpaid'])->default('unpaid');
-            $table->enum('payment_type',['cash','online'])->nullable();
+            $table->enum('payment_type',['cash','online'])->default('cash');
             $table->timestamps();
         });
     }
