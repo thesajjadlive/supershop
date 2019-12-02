@@ -11,7 +11,7 @@
                 <div class="card-body">
                     @if(session('message'))
                         <div class="text-center" style="margin: 0 0 20px 0">
-                            <span class="alert alert-danger">{{ session('message') }}</span>
+                            <span class="alert alert-danger">Invalid email or password</span>
                         </div>
                     @endif
                     <form method="POST" action="{{ route('user.login.submit') }}">

@@ -58,6 +58,10 @@ Route::get('llogin',function (){
 //Customer multi-auth routes
 Route::get('registration', 'Customer\RegisterController@showRegistrationForm')->name('user.register');
 Route::post('registration', 'CustomerController@create')->name('user.register.submit');
+Route::get('account', 'CustomerController@view')->name('user.view')->middleware('customer');
+Route::get('account/info', 'CustomerController@show')->name('user.details')->middleware('customer');
+Route::get('account/{id}/edit', 'CustomerController@edit')->name('user.info.edit')->middleware('customer');
+Route::put('account/{id}','CustomerController@update')->name('user.info.update')->middleware('customer');
 
 Route::get('signin', 'Customer\LoginController@showLoginForm')->name('user.login');
 Route::post('signin', 'Customer\LoginController@login')->name('user.login.submit');

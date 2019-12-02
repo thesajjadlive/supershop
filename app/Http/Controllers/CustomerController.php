@@ -131,9 +131,18 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
+    public function view()
+    {
+        $id = Auth::guard('customer')->user()->id;
+        $data['customer'] = Customer::findOrFail($id);
+        return view('customer.index',$data);
+    }
+
     public function show(Customer $customer)
     {
-        //
+        $id = Auth::guard('customer')->user()->id;
+        $data['customer'] = $customer->findOrFail($id);
+        return view('customer.info',$data);
     }
 
     /**
@@ -142,9 +151,10 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
-        //
+        $data['customer'] = Customer::findOrFail($id);
+        return view('customer.edit',$data);
     }
 
     /**
@@ -154,11 +164,34 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $customer = Customer::findOrFail($id) ;
 
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'password' => 'confirmed',
+            'phone' => 'required',
+            'street_address' => 'required',
+            'district' => 'required',
+            'zip' => 'required'
+        ]);
+
+        //customer update
+        $data = $request->except('_token','password');
+
+        if ($request->password)
+        {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $customer->update($data);
+
+        session()->flash('message','Information Updated Successfully');
+        return redirect()->route('user.details');
+    }
     /**
      * Remove the specified resource from storage.
      *
